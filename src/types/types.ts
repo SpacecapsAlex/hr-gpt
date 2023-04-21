@@ -5,3 +5,8 @@ export type InputType = {
   isDisabled?: boolean;
   className?:string
 };
+
+export type DatePickerType = {
+  handleChange: (date:string) => void,
+  defaultDate:string
+};
