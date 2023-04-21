@@ -1,0 +1,19 @@
+import { Checkbox } from 'antd';
+import { CheckboxChangeEvent } from 'antd/es/checkbox';
+import React, { FC } from 'react';
+import { CheckBoxType } from '../../types/types';
+
+export const CheckBoxComponent: FC<CheckBoxType> = ({
+  handleChange,
+  checkBoxText,
+  className,
+}) => {
+  const onChange = (e: CheckboxChangeEvent) => {
+    handleChange(e.target.checked);
+  };
+  return (
+    <Checkbox className={className} onChange={onChange}>
+      {checkBoxText}
+    </Checkbox>
+  );
+};

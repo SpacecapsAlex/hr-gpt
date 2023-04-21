@@ -11,6 +11,8 @@ export const DatePickerComponent: ComponentStory<typeof DatePicker> = (
 ) => <DatePicker {...args} />;
 
 DatePickerComponent.args = {
-  defaultDate: '01/04/2023',
-  handleChange: (value: string) => {},
+  defaultDate: '01/03/2023',
+  handleChange: (value: string) => {
+    console.log(value);
+  },
 };

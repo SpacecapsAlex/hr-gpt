@@ -10,3 +10,9 @@ export type DatePickerType = {
   handleChange: (date:string) => void,
   defaultDate:string
 };
+
+export type CheckBoxType = {
+  handleChange: (value:boolean) => void,
+  checkBoxText: string,
+  className: string,
+};
