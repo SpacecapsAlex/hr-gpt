@@ -3,5 +3,5 @@ export type InputType = {
   value?: string;
   handleChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   isDisabled?: boolean;
-  className:string
+  className?:string
 };
