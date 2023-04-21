@@ -16,3 +16,13 @@ export type CheckBoxType = {
   checkBoxText: string,
   className: string,
 };
+type RadioOption = {
+  label:string;
+  value: string;
+};
+
+export type RadioButtonGroupType = {
+  options: RadioOption[];
+  defaultValue?: string;
+  handleChange:(value:string) => void;
+};
