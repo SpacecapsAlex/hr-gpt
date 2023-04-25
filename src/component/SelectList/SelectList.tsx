@@ -4,6 +4,7 @@ import { FC } from 'react';
 type OptionType = {
   value: string;
   label: string;
+  disabled?: boolean;
 };
 
 type SelectListType = {
@@ -27,7 +28,6 @@ export const SelectListComponent: FC<SelectListType> = ({
   value,
   handleChange,
   handleSearch,
-  className,
   isDisabled,
   isLoading,
   isAbleClear,
@@ -36,7 +36,6 @@ export const SelectListComponent: FC<SelectListType> = ({
   mode,
 }) => (
   <Select
-    className={`w-4/12 ${className}`}
     defaultValue={defaultValue}
     options={options}
     value={value}

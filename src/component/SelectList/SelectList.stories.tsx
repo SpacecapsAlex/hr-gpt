@@ -12,4 +12,10 @@ export const SelectListComponent: ComponentStory<typeof SelectList> = (
 
 SelectListComponent.args = {
   placeholder: 'text',
+  options: [
+    { value: 'jack', label: 'Jack' },
+    { value: 'lucy', label: 'Lucy' },
+    { value: 'Yiminghe', label: 'yiminghe' },
+    { value: 'disabled', label: 'Disabled', disabled: true },
+  ],
 };
