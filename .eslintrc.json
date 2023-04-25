@@ -1,26 +1,15 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "prettier",
-    "@typescript-eslint"
-  ],
-  "extends": [
-    "airbnb-base",
-    "airbnb-typescript/base"
-  ],
+  "plugins": ["prettier", "@typescript-eslint"],
+  "extends": ["airbnb-base", "airbnb-typescript/base"],
   "parserOptions": {
-            "project": "./tsconfig.json"    
+    "project": "./tsconfig.json"
   },
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [
-          ".js",
-          ".jsx",
-          ".ts",
-          ".tsx"
-        ]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
   },
@@ -35,20 +24,17 @@
         "tsx": "never",
         "mjs": "never"
       }
-   ],
-        "import/prefer-default-export": "off",
-        "max-lines": ["error", {"max": 100}],
-        "max-len":"off",
-        "import/no-extraneous-dependencies": [
-          "error",
-          {
-            "devDependencies": [
-              "**/*.stories.*"
-            ],
-            "peerDependencies": true
-          }
-        ]
+    ],
+    "import/prefer-default-export": "off",
+    "max-lines": ["error", { "max": 100 }],
+    "max-len": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*.stories.*"],
+        "peerDependencies": true
+      }
+    ],
+    "no-unused-vars": "error"
   }
 }
-
-

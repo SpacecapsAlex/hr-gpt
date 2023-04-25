@@ -1,5 +1,5 @@
 import { Input } from 'antd';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { InputType } from '../../types/types';
 
 export const InputComponent: FC<InputType> = ({
