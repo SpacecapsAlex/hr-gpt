@@ -2,7 +2,11 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "plugins": ["prettier", "@typescript-eslint"],
-  "extends": ["airbnb-base", "airbnb-typescript/base"],
+  "extends": [
+    "airbnb-base",
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
@@ -15,6 +19,9 @@
     }
   },
   "rules": {
+    "@typescript-eslint/ban-types": ["error", { "types": { "{}": false } }],
+    "no-duplicate-imports": ["error"],
+    "arrow-body-style": ["error", "as-needed"],
     "import/extensions": [
       "error",
       "ignorePackages",

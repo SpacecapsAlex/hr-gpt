@@ -3,26 +3,33 @@ export type InputType = {
   value?: string;
   handleChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   isDisabled?: boolean;
-  className?:string
+  className?: string;
 };
 
 export type DatePickerType = {
-  handleChange: (date:string) => void,
-  defaultDate:string
+  handleChange: (date: string) => void;
+  defaultDate: string;
 };
 
 export type CheckBoxType = {
-  handleChange: (value:boolean) => void,
-  checkBoxText: string,
-  className: string,
+  handleChange: (value: boolean) => void;
+  checkBoxText: string;
+  className: string;
 };
 type RadioOption = {
-  label:string;
+  label: string;
   value: string;
 };
 
 export type RadioButtonGroupType = {
   options: RadioOption[];
   defaultValue?: string;
-  handleChange:(value:string) => void;
+  handleChange: (value: string) => void;
+};
+
+export type ScrollTableType = {
+  x?: string | number | true;
+  y?: string | number;
+} & {
+  scrollToFirstRowOnChange?: boolean;
 };
