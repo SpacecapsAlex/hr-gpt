@@ -1,23 +1,19 @@
 import { Tag } from 'antd';
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 type TagsType = {
   tagsValue: string[]
+  isClosable: boolean
+  handleClose: (index: number) => void
 };
 
-export const Tags:FC<TagsType> = ({ tagsValue }) => {
-  const handleClose = (index:number) => {
-    tagsValue.splice(index, 1);
-  };
-  return (
+export const Tags:FC<TagsType> = ({ tagsValue, handleClose, isClosable = true }) => (
     <>
       {
         tagsValue.map((tag, index) => (
-          <Tag key={index} closable onClose={() => handleClose(index)}>
+          <Tag key={index} closable={isClosable} onClose={() => handleClose(index)}>
             {tag}
           </Tag>
         ))
       }
-    </>
-  );
-};
+    </>);
