@@ -1,4 +1,4 @@
-import { Space, Tag } from 'antd';
+import { Tag } from 'antd';
 import React, { FC } from 'react';
 
 type TagsType = {
@@ -10,7 +10,7 @@ export const Tags:FC<TagsType> = ({ tagsValue }) => {
     tagsValue.splice(index, 1);
   };
   return (
-    <Space size={[0, 8]} wrap>
+    <>
       {
         tagsValue.map((tag, index) => (
           <Tag key={index} closable onClose={() => handleClose(index)}>
@@ -18,6 +18,6 @@ export const Tags:FC<TagsType> = ({ tagsValue }) => {
           </Tag>
         ))
       }
-    </Space>
+    </>
   );
 };
