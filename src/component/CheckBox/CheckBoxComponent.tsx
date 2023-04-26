@@ -1,6 +1,6 @@
 import { Checkbox } from 'antd';
 import { CheckboxChangeEvent } from 'antd/es/checkbox';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { CheckBoxType } from '../../types/types';
 
 export const CheckBoxComponent: FC<CheckBoxType> = ({
