@@ -16,7 +16,7 @@ export const InputComponent: FC<InputType> = ({
       placeholder={placeholder}
       value={value}
       disabled={isDisabled}
-      onChange={handleChange}
+      onChange={(e) => handleChange(e.target.value)}
       autoSize
     />
   );

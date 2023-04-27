@@ -6,6 +6,7 @@ import { DatePickerType } from '../../types/types';
 export const DatePickerComponent: FC<DatePickerType> = ({
   handleChange,
   defaultDate,
+  value,
 }) => {
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
     handleChange(dateString);
@@ -13,8 +14,9 @@ export const DatePickerComponent: FC<DatePickerType> = ({
   return (
     <DatePicker
       onChange={onChange}
+      placeholder='hello world'
       defaultValue={dayjs(defaultDate, 'DD/MM/YYYY')}
-      format={'DD/MM/YYYY'}
+      value={dayjs(value, 'DD/MM/YYYY')}
     />
   );
 };
