@@ -28,7 +28,7 @@ export const ModalComponent: ComponentStory<typeof Modal> = (args) => {
         isOpen={isModalOpen}
         handleOk={handleOk}
         handleCancel={handleCancel}
-        content={
+        children={
           <div>
             <p>Some contents...</p>
             <p>Some contents...</p>

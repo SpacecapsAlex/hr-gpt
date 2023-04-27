@@ -3,12 +3,12 @@ import { Modal as ModalComponent, ButtonProps } from 'antd';
 
 import styles from './styles.module.css';
 
-type ButtonPropsType = {
+export type ModalPropsType = {
   isOpen: boolean;
-  content?: string | ReactNode;
+  children?: string | ReactNode;
   title?: string;
-  isDisabled?: boolean;
   isCentered?: boolean;
+  isClosable?: boolean;
   footer?: ReactNode;
   okButtonProps?: ButtonProps;
   cancelButtonProps?: ButtonProps;
@@ -18,14 +18,15 @@ type ButtonPropsType = {
   isConfirmLoading?: boolean; // apply loading visual effect for OK button
 };
 
-export const Modal: FC<ButtonPropsType> = ({
-  content,
+export const Modal: FC<ModalPropsType> = ({
+  children,
   title,
   handleCancel,
   handleOk,
   isConfirmLoading,
   isOpen,
   isCentered,
+  isClosable,
   footer,
   okButtonProps,
   cancelButtonProps,
@@ -43,7 +44,8 @@ export const Modal: FC<ButtonPropsType> = ({
     cancelButtonProps={cancelButtonProps}
     width={width}
     className={styles.wrapper}
+    closable={isClosable}
   >
-    {content}
+    {children}
   </ModalComponent>
 );
