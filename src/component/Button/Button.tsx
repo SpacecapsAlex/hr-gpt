@@ -19,7 +19,7 @@ type ButtonPropsType = {
 };
 
 export const Button: FC<ButtonPropsType> = ({
-  type,
+  type = 'default',
   text,
   isLoading,
   isDisabled,

@@ -3,6 +3,7 @@ export { SelectListComponent as SelectList } from './SelectList/SelectList';
 export { Label } from './Label/Label';
 export { Table } from './Table/Table';
 export { Button } from './Button/Button';
+export { Modal } from './Modal/Modal';
 export { DatePickerComponent as DatePicker } from './DatePicker/DatePicker';
 export { CheckBoxComponent as CheckBox } from './CheckBox/CheckBoxComponent';
 export { RadioButtonGroup } from './RadioButton/RadioButtonGroup';
