@@ -5,7 +5,8 @@ import { useRecoilState } from 'recoil';
 import { menuItemsStart } from './AppConstants';
 import { menuItemsState } from './state/atom/menuState';
 import { modalState } from './state/atom/modalState';
-import { Modal } from './component';
+import { alertState } from './state/atom/alertState';
+import { Alert, Modal } from './component';
 
 import './App.css';
 
@@ -13,6 +14,7 @@ const { Header, Sider, Content } = Layout;
 
 export const App = () => {
   const [menuItems, setMenuItems] = useRecoilState(menuItemsState);
+  const [alert, setAlert] = useRecoilState(alertState);
   const [modal, setModal] = useRecoilState(modalState);
   const [collapsed, setCollapsed] = useState<boolean>(false);
 
@@ -40,6 +42,19 @@ export const App = () => {
       >
         {modal.children}
       </Modal>
+      <Alert
+        type={alert.type}
+        title={alert.title}
+        description={alert.description}
+        isIconShow={alert.isIconShow}
+        isClosable={alert.isClosable}
+        isShow={alert.isShow}
+        handleClose={() => setAlert({ ...alert, isShow: false })}
+        afterClose={alert.afterClose}
+        action={alert.action}
+        closeText={alert.closeText}
+        banner={alert.banner}
+      />
       <Sider
         className="sider"
         collapsible
