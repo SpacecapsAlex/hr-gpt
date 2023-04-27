@@ -18,11 +18,21 @@
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "types": [
+      "webpack-env",
+      "jest",
+      "react",
+      "react-dom",
+      "@types/node",
+      "@types/react",
+      "@types/react-dom"
+    ]
   },
   "include": ["src", "./tailwind.config.js"]
 }
