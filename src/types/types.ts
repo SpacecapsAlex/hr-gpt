@@ -3,22 +3,32 @@ export type InputType = {
   value: string;
   handleChange: (e: string) => void;
   isDisabled?: boolean;
-  className?:string
+  className?: string;
 };
 
 export type DatePickerType = {
+<<<<<<< HEAD
   handleChange: (date:string) => void,
   defaultDate?:string,
   value?:string,
+=======
+  handleChange: (date: string) => void;
+  defaultDate: string;
+>>>>>>> develop
 };
 
 export type CheckBoxType = {
-  handleChange: (value:boolean) => void,
-  checkBoxText: string,
-  className: string,
+  handleChange: (value: boolean) => void;
+  checkBoxText: string;
+  className: string;
 };
+<<<<<<< HEAD
 export type RadioOption = {
   label:string;
+=======
+type RadioOption = {
+  label: string;
+>>>>>>> develop
   value: string;
   disabled?: boolean;
 };
@@ -26,8 +36,19 @@ export type RadioOption = {
 export type RadioButtonGroupType = {
   options: RadioOption[];
   defaultValue?: string;
+<<<<<<< HEAD
   value?: string;
   handleChange:(value:string) => void;
+=======
+  handleChange: (value: string) => void;
+};
+
+export type ScrollTableType = {
+  x?: string | number | true;
+  y?: string | number;
+} & {
+  scrollToFirstRowOnChange?: boolean;
+>>>>>>> develop
 };
 
 export type FormItemType = {
