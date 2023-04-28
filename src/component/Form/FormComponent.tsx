@@ -1,6 +1,6 @@
 import { Button } from 'antd';
 import {
-  FC, useCallback, useEffect, useState,
+  FC, useEffect, useState,
 } from 'react';
 import { FormComponentType } from '../../types/types';
 import { CheckBoxComponent } from '../CheckBox/CheckBoxComponent';
@@ -12,29 +12,25 @@ import { SelectListComponent } from '../SelectList/SelectList';
 export const FormComponent: FC<FormComponentType> = ({
   formItems,
   handleFinish,
+  className,
 }) => {
   const [formValue, setFormValue] = useState<{ [key:string]: any }>({});
   useEffect(() => {
     formItems.forEach((item) => {
-      console.log(item.name, item.value);
-      setFormValue((prevState) => { Object.assign(prevState, { [item.name]: item.value }); });
-      debugger; // eslint-disable-line no-debugger
+      setFormValue(Object.assign(formValue, { [item.name]: item.value }));
     });
   }, []);
-  //  console.log(formValue);
-  const handleChange = useCallback(
-    (name: string, value: string | boolean | number) => {
-      setFormValue({
-        ...formValue,
-        [name]: value,
-      });
-    },
-    [formValue],
-  );
+  const handleChange = (name: string, value: string | boolean | number) => {
+    setFormValue({
+      ...formValue,
+      [name]: value,
+    });
+  };
+  console.log(formValue);
   return (
-    <form action="">
-      {formItems.map((formItem) => (
-        <div>
+    <form>
+      {formItems.map((formItem, index) => (
+        <div key={index} className={className}>
           {formItem.itemType === 'checkBox' && (
             <CheckBoxComponent
               handleChange={(value) => handleChange(formItem.name, value)}
@@ -46,14 +42,14 @@ export const FormComponent: FC<FormComponentType> = ({
             <DatePickerComponent
             handleChange={(value) => handleChange(formItem.name, value)}
               defaultDate={formItem.defaultValue ?? ''}
-              value={Object.keys(formValue).filter((key) => key === formItem.name)[0]}
+              value={formValue[Object.keys(formValue).filter((key) => key === formItem.name)[0]] ?? formItem.defaultValue}
             />
            )}
           {formItem.itemType === 'input' && (
             <InputComponent
               placeholder={formItem.placeholder ?? ''}
               handleChange={(value) => handleChange(formItem.name, value)}
-              value={''}
+              value={formValue[Object.keys(formValue).filter((key) => key === formItem.name)[0]] ?? formItem.value}
             />
           )}
           {formItem.itemType === 'radio' && (
@@ -61,6 +57,7 @@ export const FormComponent: FC<FormComponentType> = ({
               options={formItem.options ?? []}
               handleChange={(value) => handleChange(formItem.name, value)}
               defaultValue={formItem.defaultValue}
+              value={formValue[Object.keys(formValue).filter((key) => key === formItem.name)[0]] ?? formItem.defaultValue}
             />
           )}
           {formItem.itemType === 'select' && (
@@ -68,7 +65,7 @@ export const FormComponent: FC<FormComponentType> = ({
               defaultValue={formItem.defaultValue ?? ''}
               options={formItem.options ?? []}
               value={
-                Object.keys(formValue).filter((key) => key === formItem.name)[0]
+                formValue[Object.keys(formValue).filter((key) => key === formItem.name)[0]]
               }
               isDisabled={formItem.isDisabled}
               isLoading={formItem.isLoading}

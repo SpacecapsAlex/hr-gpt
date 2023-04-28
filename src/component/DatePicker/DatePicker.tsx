@@ -1,13 +1,15 @@
 import { DatePicker, DatePickerProps } from 'antd';
 import { FC } from 'react';
 import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { DatePickerType } from '../../types/types';
 
 export const DatePickerComponent: FC<DatePickerType> = ({
   handleChange,
   defaultDate,
-  value,
 }) => {
+  const dateFormat = 'DD/MM/YYYY';
+  dayjs.extend(customParseFormat);
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
     handleChange(dateString);
   };
@@ -15,8 +17,8 @@ export const DatePickerComponent: FC<DatePickerType> = ({
     <DatePicker
       onChange={onChange}
       placeholder='hello world'
-      defaultValue={dayjs(defaultDate, 'DD/MM/YYYY')}
-      value={dayjs(value, 'DD/MM/YYYY')}
+      format={dateFormat}
+      defaultValue={defaultDate ? dayjs(defaultDate, dateFormat) : dayjs()}
     />
   );
 };

@@ -26,6 +26,7 @@ export type RadioOption = {
 export type RadioButtonGroupType = {
   options: RadioOption[];
   defaultValue?: string;
+  value?: string;
   handleChange:(value:string) => void;
 };
 
@@ -56,8 +57,5 @@ export type FormItemType = {
 export type FormComponentType = {
   formItems: FormItemType[];
   handleFinish: (values: any) => void;
-  name: string;
-};
-export type UniversalFormState<T> = {
-  [key in keyof T]: T[key];
+  className: string
 };

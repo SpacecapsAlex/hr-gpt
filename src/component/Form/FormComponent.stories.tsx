@@ -25,8 +25,7 @@ const testForm:FormItemType[] = [
     isRequared: false,
     validationMassage: 'select date',
     itemType: 'datePicker',
-    // defaultValue: '01/03/2023',
-    value: '01/03/2022',
+    defaultValue: '01/03/2023',
   },
   {
     name: 'input',
@@ -44,7 +43,7 @@ const testForm:FormItemType[] = [
     validationMassage: 'select value',
     itemType: 'radio',
     options: optionsStory,
-    value: optionsStory[0].value,
+    defaultValue: optionsStory[0].value,
   },
   {
     name: 'select',
