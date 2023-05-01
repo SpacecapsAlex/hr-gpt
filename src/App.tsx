@@ -6,7 +6,7 @@ import { menuItemsStart } from './AppConstants';
 import { menuItemsState } from './state/atom/menuState';
 import { modalState } from './state/atom/modalState';
 import { alertState } from './state/atom/alertState';
-import { Alert, Modal } from './component';
+import { Alert, Modal, UserCreateForm } from './component';
 
 import './App.css';
 
@@ -73,7 +73,10 @@ export const App = () => {
       </Sider>
       <Layout className="site-layout">
         <Header>HEADER</Header>
-        <Content>CONTENT</Content>
+        <Content>
+          CONTENT
+          <UserCreateForm />
+        </Content>
       </Layout>
     </Layout>
   );

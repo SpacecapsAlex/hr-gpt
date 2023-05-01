@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 export type InputType = {
   placeholder: string;
   value: string;
@@ -6,15 +7,14 @@ export type InputType = {
   className?: string;
 };
 
+type ModeDateType = 'time' | 'date' | 'month' | 'year';
+
 export type DatePickerType = {
-<<<<<<< HEAD
-  handleChange: (date:string) => void,
-  defaultDate?:string,
-  value?:string,
-=======
   handleChange: (date: string) => void;
-  defaultDate: string;
->>>>>>> develop
+  defaultDate?: string;
+  value?: string;
+  label?: string;
+  mode?: ModeDateType;
 };
 
 export type CheckBoxType = {
@@ -22,13 +22,9 @@ export type CheckBoxType = {
   checkBoxText: string;
   className: string;
 };
-<<<<<<< HEAD
-export type RadioOption = {
-  label:string;
-=======
+
 type RadioOption = {
   label: string;
->>>>>>> develop
   value: string;
   disabled?: boolean;
 };
@@ -36,10 +32,7 @@ type RadioOption = {
 export type RadioButtonGroupType = {
   options: RadioOption[];
   defaultValue?: string;
-<<<<<<< HEAD
   value?: string;
-  handleChange:(value:string) => void;
-=======
   handleChange: (value: string) => void;
 };
 
@@ -48,7 +41,6 @@ export type ScrollTableType = {
   y?: string | number;
 } & {
   scrollToFirstRowOnChange?: boolean;
->>>>>>> develop
 };
 
 export type FormItemType = {
@@ -69,14 +61,84 @@ export type FormItemType = {
   isSearch?: boolean;
   mode?: 'multiple' | 'tags';
   isRequared: boolean;
+  break?: boolean;
   validationMassage?: string;
   name: string;
   label?: string;
-  placeholder?: string
+  placeholder?: string;
+  modeDate?: ModeDateType;
+  addButton?: boolean;
+  addButtonText?: string;
+  flexBasis?: string;
 };
 
 export type FormComponentType = {
   formItems: FormItemType[];
   handleFinish: (values: any) => void;
-  className: string
+  classNameWrapper: string;
+  buttonText: string;
+  classNameItem?: string;
+};
+
+export type CreateUserType = {
+  firstName: string;
+  surName: string;
+  lastName: string;
+  birthday: string;
+  citizenship: string;
+  country: string;
+  city: string;
+  position: string;
+  professionalLevel: string;
+  workLevelSkill: 0;
+  additional: [
+    {
+      title: string;
+      description: string;
+    },
+  ];
+  educations: [
+    {
+      startYear: 0;
+      finishYear: 0;
+      institution: string;
+      specialization: string;
+      mainInformation: string;
+      educationTypeName: string;
+    },
+  ];
+  contacts: [
+    {
+      name: string;
+      value: string;
+      isPrimary: true;
+    },
+  ];
+  languages: [
+    {
+      name: string;
+      level: string;
+      isPrimary: true;
+    },
+  ];
+  skills: [
+    {
+      name: string;
+    },
+  ];
+  projects: [
+    // not required
+    {
+      name: string;
+      startDate: string;
+      endDate: string;
+      time: string;
+      position: string;
+      description: string;
+      someInformation: string;
+      mainInformation: string;
+      responsibilities: [string];
+      skills: [string];
+    },
+  ];
 };
