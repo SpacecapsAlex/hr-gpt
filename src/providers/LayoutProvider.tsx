@@ -3,7 +3,7 @@ import { Layout, Menu } from 'antd';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { menuItemsStart } from '../AppConstants';
 import { menuItemsState, MenuItemsType } from '../state/atom/menuState';
-import { userState, userStateType } from '../state/atom/userState';
+import { userState, UserStateType } from '../state/atom/userState';
 
 import layoutProviderStyles from './LayoutProvider.module.css';
 
@@ -18,7 +18,7 @@ type LayoutProviderProps = {
 export const LayoutProvider: FC = ({ children }: LayoutProviderProps) => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const [menuItems, setMenuItems] = useRecoilState<MenuItemsType[]>(menuItemsState);
-  const userProfile = useRecoilValue<userStateType>(userState);
+  const userProfile = useRecoilValue<UserStateType>(userState);
 
   useEffect(() => {
     setMenuItems(menuItemsStart);

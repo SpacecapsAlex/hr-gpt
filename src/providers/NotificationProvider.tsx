@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { alertState } from '../state/atom/alertState';
 import { useRecoilState } from 'recoil';
+import { alertState } from '../state/atom/alertState';
 import { Alert } from '../component';
 import { AlertPropsType } from '../component/Alert/Alert';
 

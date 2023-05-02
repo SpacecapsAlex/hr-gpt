@@ -1,7 +1,7 @@
 import { FC } from 'react';
+import { useRecoilState } from 'recoil';
 import { Modal } from '../component';
 import { modalState } from '../state/atom/modalState';
-import { useRecoilState } from 'recoil';
 import { ModalPropsType } from '../component/Modal/Modal';
 
 export const ModalProvider: FC = () => {

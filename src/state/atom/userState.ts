@@ -1,11 +1,11 @@
 import { atom, RecoilState } from 'recoil';
 
-export type userStateType = {
+export type UserStateType = {
   id: string;
   login: string;
 };
 
-export const userState: RecoilState<userStateType> = atom({
+export const userState: RecoilState<UserStateType> = atom({
   key: 'userState',
   default: {
     id: '',

@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { LayoutProvider } from './';
+import { LayoutProvider } from '.';
 
 export default {
   title: 'Components/LayoutProvider',
