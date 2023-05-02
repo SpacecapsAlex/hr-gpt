@@ -7,14 +7,9 @@ export type InputType = {
 };
 
 export type DatePickerType = {
-<<<<<<< HEAD
   handleChange: (date:string) => void,
   defaultDate?:string,
   value?:string,
-=======
-  handleChange: (date: string) => void;
-  defaultDate: string;
->>>>>>> develop
 };
 
 export type CheckBoxType = {
@@ -22,13 +17,9 @@ export type CheckBoxType = {
   checkBoxText: string;
   className: string;
 };
-<<<<<<< HEAD
+
 export type RadioOption = {
-  label:string;
-=======
-type RadioOption = {
   label: string;
->>>>>>> develop
   value: string;
   disabled?: boolean;
 };
@@ -36,11 +27,8 @@ type RadioOption = {
 export type RadioButtonGroupType = {
   options: RadioOption[];
   defaultValue?: string;
-<<<<<<< HEAD
   value?: string;
   handleChange:(value:string) => void;
-=======
-  handleChange: (value: string) => void;
 };
 
 export type ScrollTableType = {
@@ -48,7 +36,6 @@ export type ScrollTableType = {
   y?: string | number;
 } & {
   scrollToFirstRowOnChange?: boolean;
->>>>>>> develop
 };
 
 export type FormItemType = {
