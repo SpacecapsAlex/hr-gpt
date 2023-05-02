@@ -34,8 +34,8 @@
 }
 
 .siderWrapper {
-    background-color: #FFF !important;
-    border-right: 2px solid #F0F0F0 !important;
+    background-color: #FFF;
+    border-right: 2px solid #F0F0F0;
 }
 
 .siderWrapper :global .ant-layout-sider-trigger {
@@ -60,14 +60,14 @@
 }
 
 .siteLayoutWrapper {
-    background-color: #F4F7FF !important;
+    background-color: #F4F7FF;
 }
 
 .headerWrapper {
-    background-color: #FFF !important;
+    background-color: #FFF;
     display: flex;
     justify-content: flex-end;
-    padding-right: 30px !important;
-    padding-top: 5px !important;
-    padding-left: 20px !important;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-left: 20px;
 }
