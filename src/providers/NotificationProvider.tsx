@@ -14,14 +14,8 @@ export const NotificationProvider: FC<NotificationProviderType> = ({ children })
   return (
     <>
       <Alert
-        type={alert.type}
-        title={alert.title}
-        description={alert.description}
-        isIconShow={alert.isIconShow}
-        isClosable={alert.isClosable}
-        isShow={alert.isShow}
+        { ...alert }
         handleClose={() => setAlert({ ...alert, isShow: false })}
-        afterClose={alert.afterClose}
       />
       {children}
     </>
