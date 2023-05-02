@@ -38,6 +38,16 @@
     border-right: 2px solid #F0F0F0 !important;
 }
 
+.siderWrapper :global .ant-layout-sider-trigger {
+    color: black;
+    background-color: #FFF;
+    border: 2px solid #F0F0F0;
+}
+
+.siderWrapper :global .ant-layout-sider-trigger:hover {
+    background-color: #F4F7FF;
+}
+
 .titleWrapper {
     height: 32px;
     margin: 14px;

@@ -7,8 +7,6 @@ import { userState, UserStateType } from '../state/atom/userState';
 
 import layoutProviderStyles from './LayoutProvider.module.css';
 
-import './LayoutProvider.css';
-
 const { Header, Sider, Content } = Layout;
 
 type LayoutProviderProps = {
