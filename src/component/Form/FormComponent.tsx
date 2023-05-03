@@ -17,6 +17,7 @@ export const FormComponent: FC<FormComponentType> = ({
   classNameWrapper,
   classNameItem,
   buttonText,
+  classNameButton,
 }) => {
   const [formValue, setFormValue] = useState<{ [key: string]: any }>({});
   useEffect(() => {
@@ -122,7 +123,7 @@ export const FormComponent: FC<FormComponentType> = ({
           )}
         </div>
       ))}
-      <Button onClick={() => handleFinish(formValue)} text={buttonText} />
+      <Button className={classNameButton ?? ''} onClick={() => handleFinish(formValue)} text={buttonText} />
     </form>
   );
 };

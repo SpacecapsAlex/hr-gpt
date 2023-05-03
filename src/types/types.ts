@@ -78,6 +78,7 @@ export type FormComponentType = {
   classNameWrapper: string;
   buttonText: string;
   classNameItem?: string;
+  classNameButton?:string
 };
 
 type AdditionalType = {
@@ -169,3 +170,8 @@ export type ArrayKeys =
   | 'someInformation'
   | 'responsibilities'
   | 'skills';
+
+export type LoginFormType = {
+  login: string;
+  password: string;
+};
