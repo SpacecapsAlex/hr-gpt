@@ -1,34 +1,28 @@
+/* eslint-disable */
 export type InputType = {
   placeholder: string;
   value: string;
   handleChange: (e: string) => void;
   isDisabled?: boolean;
   className?: string;
+  rows?: number;
+  autoSize?: boolean
 };
 
 export type DatePickerType = {
-<<<<<<< HEAD
   handleChange: (date:string) => void,
   defaultDate?:string,
   value?:string,
-=======
-  handleChange: (date: string) => void;
-  defaultDate: string;
->>>>>>> develop
 };
 
 export type CheckBoxType = {
   handleChange: (value: boolean) => void;
   checkBoxText: string;
   className: string;
+  value?: boolean;
 };
-<<<<<<< HEAD
 export type RadioOption = {
   label:string;
-=======
-type RadioOption = {
-  label: string;
->>>>>>> develop
   value: string;
   disabled?: boolean;
 };
@@ -36,11 +30,8 @@ type RadioOption = {
 export type RadioButtonGroupType = {
   options: RadioOption[];
   defaultValue?: string;
-<<<<<<< HEAD
   value?: string;
   handleChange:(value:string) => void;
-=======
-  handleChange: (value: string) => void;
 };
 
 export type ScrollTableType = {
@@ -48,7 +39,6 @@ export type ScrollTableType = {
   y?: string | number;
 } & {
   scrollToFirstRowOnChange?: boolean;
->>>>>>> develop
 };
 
 export type FormItemType = {
@@ -63,7 +53,7 @@ export type FormItemType = {
   className?: string;
   options?: RadioOption[];
   defaultValue?: string;
-  value?: string | boolean;
+  value?: string | boolean | number;
   isLoading?: boolean;
   isAbleClear?: boolean;
   isSearch?: boolean;
@@ -80,3 +70,106 @@ export type FormComponentType = {
   handleFinish: (values: any) => void;
   className: string
 };
+
+export type UpdateUserProfileInformationType = {
+  userId: string;
+  firstName: string;
+  surName: string;
+  lastName: string;
+  birthday: string;
+  citizenship:string;
+  country:string;
+  city:string;
+  position:string;
+  workSkillsString:number;
+  professionalLevelName:string;
+};
+
+export type AdditionalInformationType = {
+  title:string;
+  description:string;
+};
+export type UpdateUserMainInformationType = {
+  userId: string;
+  information:AdditionalInformationType[];
+};
+
+export type EducationUserType = {
+  EducationTypeName:string;
+  startYear:number;
+  finishYear:number;
+  institution:string;
+  specialization:string;
+  mainInformation:string;
+};
+
+export type UpdateUserEducationType = {
+  userId: string;
+  educations: EducationUserType[];
+}
+
+export type ContactType = {
+  name: string
+  value: string;
+  isMain: boolean;
+}
+
+export type UpdateUserContactsType = {
+  userId: string;
+  contacts: ContactType[];
+}
+
+export type LanguagesType = {
+  name: string;
+  level: string;
+  isMain:boolean;
+}
+
+export type UpdateUserLanguagesType = {
+  userId: string;
+  languages: LanguagesType[];
+}
+export type SkillsType = {
+  name: string
+}
+export type UpdateUserSkillsType = {
+  userId: string;
+  skills: string[];
+}
+
+export type ProjectType = {
+  name:string
+  startDate:string
+  endDate:string
+  time: string
+  position: string
+  description: string
+  responsibilities: string[]
+  someInformation:string
+  mainInformation: string
+  skills: string[];
+}
+
+export type UpdateUserProjectType = {
+  userId: string;
+  project: ProjectType[];
+}
+
+export type GetUserType = {
+  firstName: string;
+  surName: string;
+  lastName: string;
+  birthday: string;
+  citizenship:string;
+  country:string;
+  city:string;
+  position:string;
+  workLevel: string;
+  workSkillsString:number;
+  additionalInfo:AdditionalInformationType[];
+  educationInfo: EducationUserType[];
+  contactInfo: ContactType[];
+  languageInfo: LanguagesType[];
+  skillInfo: string[];
+  projectInfo: ProjectType[]
+}

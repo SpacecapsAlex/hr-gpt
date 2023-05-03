@@ -15,6 +15,7 @@ type ButtonPropsType = {
   shape?: 'default' | 'circle' | 'round';
   href?: string;
   size?: 'large' | 'middle' | 'small';
+  className?: string;
   onClick?: () => void;
 };
 
@@ -30,6 +31,7 @@ export const Button: FC<ButtonPropsType> = ({
   shape,
   href,
   size,
+  className,
   onClick,
 }) => (
   <ButtonComponent
@@ -44,6 +46,7 @@ export const Button: FC<ButtonPropsType> = ({
     href={href}
     size={size}
     onClick={onClick}
+    className={className}
   >
     {text}
   </ButtonComponent>

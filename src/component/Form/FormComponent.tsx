@@ -1,7 +1,7 @@
-import { Button } from 'antd';
 import {
   FC, useEffect, useState,
 } from 'react';
+import { Button } from '../Button/Button';
 import { FormComponentType } from '../../types/types';
 import { CheckBoxComponent } from '../CheckBox/CheckBoxComponent';
 import { DatePickerComponent } from '../DatePicker/DatePicker';
@@ -26,11 +26,11 @@ export const FormComponent: FC<FormComponentType> = ({
       [name]: value,
     });
   };
-  console.log(formValue);
   return (
     <form>
       {formItems.map((formItem, index) => (
         <div key={index} className={className}>
+          <div>{formItem.label}</div>
           {formItem.itemType === 'checkBox' && (
             <CheckBoxComponent
               handleChange={(value) => handleChange(formItem.name, value)}
@@ -79,7 +79,7 @@ export const FormComponent: FC<FormComponentType> = ({
           )}
         </div>
       ))}
-      <Button onClick={() => handleFinish(formValue)} />
+      <Button text='Сохранить' onClick={() => handleFinish(formValue)} />
     </form>
   );
 };
