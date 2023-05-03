@@ -32,7 +32,7 @@ export const EducationInformationForm:FC<EducationInformationFormType> = ({ educ
           <SelectList
           defaultValue={item.EducationTypeName}
           options={educationOptopns}
-          handleChange={(value) => {
+          handleChange={(value: string) => {
             handleChange('EducationTypeName', index, value);
           }}
           />

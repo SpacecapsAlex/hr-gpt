@@ -1,20 +1,24 @@
-import {
-  FC, useEffect, useState,
-} from 'react';
-import { Button } from '../Button/Button';
+/* eslint-disable max-lines */
+import { FC, useEffect, useState } from 'react';
 import { FormComponentType } from '../../types/types';
 import { CheckBoxComponent } from '../CheckBox/CheckBoxComponent';
 import { DatePickerComponent } from '../DatePicker/DatePicker';
 import { InputComponent } from '../Input/Input';
 import { RadioButtonGroup } from '../RadioButton/RadioButtonGroup';
-import { SelectListComponent } from '../SelectList/SelectList';
+import { SelectList } from '../SelectList/SelectList';
+import { Button } from '../Button/Button';
+import { convertDate } from '../../utils/utils';
+
+const doubleField = () => console.log('doubleField');
 
 export const FormComponent: FC<FormComponentType> = ({
   formItems,
   handleFinish,
-  className,
+  classNameWrapper,
+  classNameItem,
+  buttonText,
 }) => {
-  const [formValue, setFormValue] = useState<{ [key:string]: any }>({});
+  const [formValue, setFormValue] = useState<{ [key: string]: any }>({});
   useEffect(() => {
     formItems.forEach((item) => {
       setFormValue(Object.assign(formValue, { [item.name]: item.value }));
@@ -27,10 +31,17 @@ export const FormComponent: FC<FormComponentType> = ({
     });
   };
   return (
-    <form>
+    <form className={classNameWrapper}>
       {formItems.map((formItem, index) => (
-        <div key={index} className={className}>
-          <div>{formItem.label}</div>
+        <div
+          key={index}
+          className={classNameItem}
+          style={
+            formItem.break
+              ? { flexBasis: '100%' }
+              : { flexBasis: formItem.flexBasis }
+          }
+        >
           {formItem.itemType === 'checkBox' && (
             <CheckBoxComponent
               handleChange={(value) => handleChange(formItem.name, value)}
@@ -38,18 +49,40 @@ export const FormComponent: FC<FormComponentType> = ({
               className={''}
             />
           )}
-           {formItem.itemType === 'datePicker' && (
-            <DatePickerComponent
-            handleChange={(value) => handleChange(formItem.name, value)}
-              defaultDate={formItem.defaultValue ?? ''}
-              value={formValue[Object.keys(formValue).filter((key) => key === formItem.name)[0]] ?? formItem.defaultValue}
+          {formItem.addButton && (
+            <Button
+              onClick={() => doubleField()}
+              text={formItem.addButtonText}
             />
-           )}
+          )}
+          {formItem.itemType === 'datePicker' && (
+            <DatePickerComponent
+              handleChange={(value) => {
+                handleChange(formItem.name, convertDate(value));
+              }}
+              defaultDate={formItem.defaultValue ?? ''}
+              label={formItem.label}
+              mode={formItem.modeDate}
+              value={
+                formValue[
+                  Object.keys(formValue).filter(
+                    (key) => key === formItem.name,
+                  )[0]
+                ] ?? formItem.defaultValue
+              }
+            />
+          )}
           {formItem.itemType === 'input' && (
             <InputComponent
               placeholder={formItem.placeholder ?? ''}
               handleChange={(value) => handleChange(formItem.name, value)}
-              value={formValue[Object.keys(formValue).filter((key) => key === formItem.name)[0]] ?? formItem.value}
+              value={
+                formValue[
+                  Object.keys(formValue).filter(
+                    (key) => key === formItem.name,
+                  )[0]
+                ] ?? formItem.value
+              }
             />
           )}
           {formItem.itemType === 'radio' && (
@@ -57,21 +90,31 @@ export const FormComponent: FC<FormComponentType> = ({
               options={formItem.options ?? []}
               handleChange={(value) => handleChange(formItem.name, value)}
               defaultValue={formItem.defaultValue}
-              value={formValue[Object.keys(formValue).filter((key) => key === formItem.name)[0]] ?? formItem.defaultValue}
+              value={
+                formValue[
+                  Object.keys(formValue).filter(
+                    (key) => key === formItem.name,
+                  )[0]
+                ] ?? formItem.defaultValue
+              }
             />
           )}
           {formItem.itemType === 'select' && (
-            <SelectListComponent
-              defaultValue={formItem.defaultValue ?? ''}
+            <SelectList
+              defaultValue={formItem.defaultValue}
               options={formItem.options ?? []}
               value={
-                formValue[Object.keys(formValue).filter((key) => key === formItem.name)[0]]
+                formValue[
+                  Object.keys(formValue).filter(
+                    (key) => key === formItem.name,
+                  )[0]
+                ]
               }
               isDisabled={formItem.isDisabled}
               isLoading={formItem.isLoading}
               isAbleClear={formItem.isAbleClear}
               isSearch={formItem.isSearch}
-              handleChange={(value) => handleChange(formItem.name, value)}
+              handleChange={(value: string) => handleChange(formItem.name, value)}
               handleSearch={formItem.handleSearch}
               placeholder={formItem.placeholder}
               mode={formItem.mode}
@@ -79,7 +122,7 @@ export const FormComponent: FC<FormComponentType> = ({
           )}
         </div>
       ))}
-      <Button text='Сохранить' onClick={() => handleFinish(formValue)} />
+      <Button onClick={() => handleFinish(formValue)} text={buttonText} />
     </form>
   );
 };

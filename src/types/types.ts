@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable max-lines */
 export type InputType = {
   placeholder: string;
   value: string;
@@ -6,13 +6,17 @@ export type InputType = {
   isDisabled?: boolean;
   className?: string;
   rows?: number;
-  autoSize?: boolean
+  autoSize?: boolean;
 };
 
+type ModeDateType = 'time' | 'date' | 'month' | 'year';
+
 export type DatePickerType = {
-  handleChange: (date:string) => void,
-  defaultDate?:string,
-  value?:string,
+  handleChange: (date: string) => void;
+  defaultDate?: string;
+  value?: string;
+  label?: string;
+  mode?: ModeDateType;
 };
 
 export type CheckBoxType = {
@@ -21,17 +25,19 @@ export type CheckBoxType = {
   className: string;
   value?: boolean;
 };
+
 export type RadioOption = {
-  label:string;
+  label: string;
   value: string;
   disabled?: boolean;
+  className?: string;
 };
 
 export type RadioButtonGroupType = {
   options: RadioOption[];
   defaultValue?: string;
   value?: string;
-  handleChange:(value:string) => void;
+  handleChange: (value: string) => void;
 };
 
 export type ScrollTableType = {
@@ -59,16 +65,23 @@ export type FormItemType = {
   isSearch?: boolean;
   mode?: 'multiple' | 'tags';
   isRequared: boolean;
+  break?: boolean;
   validationMassage?: string;
   name: string;
   label?: string;
-  placeholder?: string
+  placeholder?: string;
+  modeDate?: ModeDateType;
+  addButton?: boolean;
+  addButtonText?: string;
+  flexBasis?: string;
 };
 
 export type FormComponentType = {
   formItems: FormItemType[];
   handleFinish: (values: any) => void;
-  className: string
+  classNameWrapper: string;
+  buttonText: string;
+  classNameItem?: string;
 };
 
 export type UpdateUserProfileInformationType = {
@@ -77,99 +90,179 @@ export type UpdateUserProfileInformationType = {
   surName: string;
   lastName: string;
   birthday: string;
-  citizenship:string;
-  country:string;
-  city:string;
-  position:string;
-  workSkillsString:number;
-  professionalLevelName:string;
+  citizenship: string;
+  country: string;
+  city: string;
+  position: string;
+  workSkillsString: number;
+  professionalLevelName: string;
 };
 
 export type AdditionalInformationType = {
-  title:string;
-  description:string;
+  title: string;
+  description: string;
 };
 export type UpdateUserMainInformationType = {
   userId: string;
-  information:AdditionalInformationType[];
+  information: AdditionalInformationType[];
 };
 
 export type EducationUserType = {
-  EducationTypeName:string;
-  startYear:number;
-  finishYear:number;
-  institution:string;
-  specialization:string;
-  mainInformation:string;
+  EducationTypeName: string;
+  startYear: number;
+  finishYear: number;
+  institution: string;
+  specialization: string;
+  mainInformation: string;
 };
 
 export type UpdateUserEducationType = {
   userId: string;
   educations: EducationUserType[];
-}
+};
 
 export type ContactType = {
-  name: string
+  name: string;
   value: string;
   isMain: boolean;
-}
+};
 
 export type UpdateUserContactsType = {
   userId: string;
   contacts: ContactType[];
-}
+};
 
 export type LanguagesType = {
   name: string;
   level: string;
-  isMain:boolean;
-}
+  isMain: boolean;
+};
 
 export type UpdateUserLanguagesType = {
   userId: string;
   languages: LanguagesType[];
-}
-export type SkillsType = {
-  name: string
-}
+};
 export type UpdateUserSkillsType = {
   userId: string;
   skills: string[];
-}
+};
 
 export type ProjectType = {
-  name:string
-  startDate:string
-  endDate:string
-  time: string
-  position: string
-  description: string
-  responsibilities: string[]
-  someInformation:string
-  mainInformation: string
+  name: string;
+  startDate: string;
+  endDate: string;
+  time: string;
+  position: string;
+  description: string;
+  responsibilities: string[];
+  someInformation: string;
+  mainInformation: string;
   skills: string[];
-}
+};
 
 export type UpdateUserProjectType = {
   userId: string;
   project: ProjectType[];
-}
+};
 
 export type GetUserType = {
   firstName: string;
   surName: string;
   lastName: string;
   birthday: string;
-  citizenship:string;
-  country:string;
-  city:string;
-  position:string;
+  citizenship: string;
+  country: string;
+  city: string;
+  position: string;
   workLevel: string;
-  workSkillsString:number;
-  additionalInfo:AdditionalInformationType[];
+  workSkillsString: number;
+  additionalInfo: AdditionalInformationType[];
   educationInfo: EducationUserType[];
   contactInfo: ContactType[];
   languageInfo: LanguagesType[];
   skillInfo: string[];
-  projectInfo: ProjectType[]
-}
+  projectInfo: ProjectType[];
+};
+type AdditionalType = {
+  title: string;
+  description: string;
+};
+
+type EducationType = {
+  startYear: number;
+  finishYear: number;
+  institution: string;
+  specialization: string;
+  mainInformation: string;
+  educationTypeName: string;
+};
+
+type LanguageType = {
+  name: string;
+  level: string;
+  isPrimary: boolean;
+};
+
+type SkillsType = {
+  name: string;
+};
+
+type ProjectsType = {
+  name: string;
+  startDate: string;
+  endDate: string;
+  time: string;
+  position: string;
+  description: string;
+  someInformation: string;
+  mainInformation: string;
+  // responsibilities: string[];   // TODO nested arrays. need to think
+  // skills: string[];
+};
+
+export type CreateUserType = {
+  firstName: string;
+  surName: string;
+  lastName: string;
+  birthday?: string;
+  citizenship: string;
+  country: string;
+  city: string;
+  position: string;
+  professionalLevel: string;
+  workLevelSkill?: number;
+  additional: AdditionalType[];
+  educations: EducationType[];
+  contacts: ContactType[];
+  languages: LanguageType[];
+  skills: SkillsType[];
+  projects: ProjectsType[];
+};
+
+export type CreateUserArrayTypeKeys =
+  | 'additional'
+  | 'educations'
+  | 'contacts'
+  | 'languages'
+  | 'skills'
+  | 'projects';
+
+export type ArrayKeys =
+  | 'title'
+  | 'description'
+  | 'startYear'
+  | 'finishYear'
+  | 'institution'
+  | 'specialization'
+  | 'mainInformation'
+  | 'educationTypeName'
+  | 'name'
+  | 'value'
+  | 'isPrimary'
+  | 'level'
+  | 'isPrimary'
+  | 'position'
+  | 'description'
+  | 'someInformation'
+  | 'responsibilities'
+  | 'skills';

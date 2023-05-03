@@ -35,7 +35,8 @@ export const UserUpdateForm: FC<UserUpdateFormType> = ({ userId }) => {
     <div className='flex flex-col gap-5'>
       <Label text='Общая информация:' type='title' />
       <Form
-        className="m-4"
+      buttonText='Сохранить'
+      classNameWrapper='m-4'
         formItems={profileInformation}
         handleFinish={(values) => {
           updateUserProfileInformationQuery({

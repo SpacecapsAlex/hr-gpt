@@ -8,7 +8,7 @@ type OptionType = {
 };
 
 type SelectListType = {
-  defaultValue: string;
+  defaultValue?: string;
   options: OptionType[];
   value?: string;
   handleChange?: (value: string, option: OptionType | OptionType[]) => void;
@@ -22,7 +22,7 @@ type SelectListType = {
   mode?: 'multiple' | 'tags';
 };
 
-export const SelectListComponent: FC<SelectListType> = ({
+export const SelectList: FC<SelectListType> = ({
   defaultValue,
   options,
   value,
