@@ -119,8 +119,7 @@ export const UserCreateForm: FC = () => {
         handleChange={(value) => handleChange('professionalLevel', value)}
         placeholder="Профессиональный уровень"
       />
-      //TODO SelectList accept only strings as value. need to think
-      {/* <SelectList
+      {/* <SelectList  //TODO SelectList accept only strings as value. need to think
         options={workLevelList}
         value={formValue.workLevelSkill as number}
         handleChange={(value) => handleChange('workLevelSkill', value)}
@@ -229,8 +228,7 @@ export const UserCreateForm: FC = () => {
           value={formValue.skills?.[0].name}
         />
       </li>
-      //TODO specific structure. need to think
-      {/* <InputComponent
+      {/* <InputComponent //TODO specific structure. need to think
         placeholder="Дополнительная информация"
         handleChange={(value) => handleChange('additionalTitle', value)}
         value={formValue.additionalTitle as string}

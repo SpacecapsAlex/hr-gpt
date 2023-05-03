@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-type MenuItemsType = {
+export type MenuItemsType = {
   key: string | number;
   label: string;
   icon?: JSX.Element | string;

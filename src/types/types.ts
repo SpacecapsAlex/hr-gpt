@@ -23,7 +23,7 @@ export type CheckBoxType = {
   className?: string;
 };
 
-type RadioOption = {
+export type RadioOption = {
   label: string;
   value: string;
   disabled?: boolean;

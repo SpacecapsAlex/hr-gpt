@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { UserCard } from '..';
+import { UserCard } from './UserCard';
 
 export default {
   title: 'Components/UserCard',
