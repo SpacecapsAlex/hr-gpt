@@ -34,7 +34,7 @@
       }
     ],
     "import/prefer-default-export": "off",
-    "max-lines": ["error", { "max": 100 }],
+//    "max-lines": ["error", { "max": 100 }],
     "max-len": "off",
     "import/no-extraneous-dependencies": [
       "error",

@@ -1,8 +1,8 @@
 /* eslint-disable max-lines */
 export type InputType = {
-  placeholder: string;
-  value: string;
-  handleChange: (e: string) => void;
+  placeholder?: string;
+  value?: string | number;
+  handleChange?: (e: string) => void;
   isDisabled?: boolean;
   className?: string;
 };

@@ -2,9 +2,9 @@ import { Tag } from 'antd';
 import { FC } from 'react';
 
 type TagsType = {
-  tagsValue: string[];
+  tagsValue?: string[];
   isClosable: boolean;
-  handleClose: (index: number) => void;
+  handleClose?: (index: number) => void;
 };
 
 export const Tags: FC<TagsType> = ({
@@ -13,8 +13,8 @@ export const Tags: FC<TagsType> = ({
   isClosable = true,
 }) => (
   <>
-    {tagsValue.map((tag, index) => (
-      <Tag key={index} closable={isClosable} onClose={() => handleClose(index)}>
+    {tagsValue?.map((tag, index) => (
+      <Tag key={index} closable={isClosable} onClose={() => handleClose?.(index)}>
         {tag}
       </Tag>
     ))}
