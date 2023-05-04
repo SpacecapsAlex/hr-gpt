@@ -43,22 +43,22 @@ export const Languages: FC<Props> = ({
         <SelectList
           options={languagesList}
           value={name || undefined}
-          handleChange={(_value) => {
-            updateArrayValues('name', _value, 'languages', index);
+          handleChange={(value) => {
+            updateArrayValues('name', value, 'languages', index);
           }}
           placeholder="Языки"
         />
         <SelectList
           options={languageLevelList}
           value={level || undefined}
-          handleChange={(_value) => {
-            updateArrayValues('level', _value, 'languages', index);
+          handleChange={(value) => {
+            updateArrayValues('level', value, 'languages', index);
           }}
           placeholder="Уровень владения"
         />
         <CheckBoxComponent
-          handleChange={(_value) => {
-            updateArrayValues('isMain', _value, 'languages', index);
+          handleChange={(value) => {
+            updateArrayValues('isMain', value, 'languages', index);
           }}
           checkBoxText="Основной язык"
         />

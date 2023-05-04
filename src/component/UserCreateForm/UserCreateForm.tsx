@@ -156,7 +156,7 @@ export const UserCreateForm: FC = () => {
         handleChange={(value) => handleChange('additionalTitle', value)}
         value={formValue.additionalTitle as string}
       /> */}
-      <div className={styles.button}>
+      <div className={styles.base}>
         <Button
           onClick={() => createNewUser(formValue)}
           text="Создать пользователя"
