@@ -15,6 +15,7 @@ export type DatePickerType = {
   value?: string;
   label?: string;
   mode?: ModeDateType;
+  disabledDate?: (date: Date) => boolean;
 };
 
 export type CheckBoxType = {
@@ -79,93 +80,3 @@ export type FormComponentType = {
   buttonText: string;
   classNameItem?: string;
 };
-
-type AdditionalType = {
-  title: string;
-  description: string;
-};
-
-type EducationType = {
-  startYear: number;
-  finishYear: number;
-  institution: string;
-  specialization: string;
-  mainInformation: string;
-  educationTypeName: string;
-};
-
-type ContactType = {
-  name: string;
-  value: string;
-  isPrimary: boolean;
-};
-
-type LanguageType = {
-  name: string;
-  level: string;
-  isPrimary: boolean;
-};
-
-type SkillsType = {
-  name: string;
-};
-
-type ProjectsType = {
-  name: string;
-  startDate: string;
-  endDate: string;
-  time: string;
-  position: string;
-  description: string;
-  someInformation: string;
-  mainInformation: string;
-  // responsibilities: string[];   // TODO nested arrays. need to think
-  // skills: string[];
-};
-
-export type CreateUserType = {
-  firstName: string;
-  surName: string;
-  lastName: string;
-  birthday?: string;
-  citizenship: string;
-  country: string;
-  city: string;
-  position: string;
-  professionalLevel: string;
-  workLevelSkill?: number;
-  additional: AdditionalType[];
-  educations: EducationType[];
-  contacts: ContactType[];
-  languages: LanguageType[];
-  skills: SkillsType[];
-  projects: ProjectsType[];
-};
-
-export type CreateUserArrayTypeKeys =
-  | 'additional'
-  | 'educations'
-  | 'contacts'
-  | 'languages'
-  | 'skills'
-  | 'projects';
-
-export type ArrayKeys =
-  | 'title'
-  | 'description'
-  | 'startYear'
-  | 'finishYear'
-  | 'institution'
-  | 'specialization'
-  | 'mainInformation'
-  | 'educationTypeName'
-  | 'name'
-  | 'value'
-  | 'isPrimary'
-  | 'level'
-  | 'isPrimary'
-  | 'position'
-  | 'description'
-  | 'someInformation'
-  | 'responsibilities'
-  | 'skills';

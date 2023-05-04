@@ -1,35 +1,34 @@
 /* eslint-disable max-lines */
 import { FC, useState } from 'react';
-import { CheckBoxComponent } from '../CheckBox/CheckBoxComponent';
 import { DatePickerComponent } from '../DatePicker/DatePicker';
 import { InputComponent } from '../Input/Input';
 import { SelectList } from '../SelectList/SelectList';
 import { createNewUser } from '../../api/createUser';
 import {
-  contactsList,
   countryList,
-  educationList,
   initialValues,
-  languageLevelList,
-  languagesList,
   profLevelList,
   positionList,
-  // workLevelList,
+  workLevelList,
 } from './UserMockData';
 import {
   ArrayKeys,
   CreateUserArrayTypeKeys,
   CreateUserType,
-} from '../../types/types';
+  UserArrayTypes,
+} from '../../types/createUserTypes';
+import { Contacts } from './Contacts/Contacts';
+import { Education } from './Education/Education';
+import { Languages } from './Languages/Languages';
 
 import styles from './styles.module.css';
-import { convertDate } from '../../utils/utils';
+import { convertDate, disabledFutureDate } from '../../utils/utils';
 import { Button } from '../Button/Button';
-
-const doubleField = () => console.log('doubleField');
 
 export const UserCreateForm: FC = () => {
   const [formValue, setFormValue] = useState<CreateUserType>(initialValues);
+
+  // console.log('formValue', formValue);
 
   const handleChange = (name: string, value: string | boolean | number) => {
     setFormValue({
@@ -50,9 +49,23 @@ export const UserCreateForm: FC = () => {
       : [];
     const contactToUpdate = updatedArray[fieldIndex] as any;
     contactToUpdate[field] = value;
+    setFormValue({
+      ...formValue,
+      [mainField]: updatedArray,
+    });
+  };
+
+  const addField = (
+    mainField: CreateUserArrayTypeKeys,
+    initialValue: UserArrayTypes,
+  ) => {
+    const selectedArray = Array.isArray(formValue[mainField])
+      ? [...formValue[mainField]]
+      : [];
+    selectedArray.push(initialValue);
     setFormValue((prevState) => ({
       ...prevState,
-      mainField: updatedArray,
+      [mainField]: selectedArray,
     }));
   };
 
@@ -86,19 +99,20 @@ export const UserCreateForm: FC = () => {
           }}
           label="Дата рождения "
           value={formValue.birthday as string}
+          disabledDate={disabledFutureDate}
         />
       </li>
       <li className={styles.formItem}>
         <SelectList
           options={countryList}
-          value={formValue.citizenship || undefined}
+          value={formValue.citizenship}
           handleChange={(value) => handleChange('citizenship', value)}
           placeholder="Гражданство"
         />
       </li>
       <SelectList
         options={countryList}
-        value={formValue.country || undefined}
+        value={formValue.country}
         handleChange={(value) => handleChange('country', value)}
         placeholder="Страна проживания"
       />
@@ -109,116 +123,37 @@ export const UserCreateForm: FC = () => {
       />
       <SelectList
         options={positionList}
-        value={formValue.position || undefined}
+        value={formValue.position}
         handleChange={(value) => handleChange('position', value)}
         placeholder="Позиция"
       />
       <SelectList
         options={profLevelList}
-        value={formValue.professionalLevel || undefined}
+        value={formValue.professionalLevel}
         handleChange={(value) => handleChange('professionalLevel', value)}
         placeholder="Профессиональный уровень"
       />
-      {/* <SelectList  //TODO SelectList accept only strings as value. need to think
+      <SelectList
         options={workLevelList}
-        value={formValue.workLevelSkill as number}
+        value={formValue.workLevelSkill?.toString()}
         handleChange={(value) => handleChange('workLevelSkill', value)}
         placeholder="Опыт работы, лет"
-      /> */}
-      <div className="flex justify-between w-full">
-        <SelectList
-          options={educationList}
-          value={formValue?.educations?.[0].educationTypeName || undefined}
-          handleChange={(value) => handleChange('educationTypeName', value)}
-          placeholder="Образование"
-        />
-        <InputComponent
-          placeholder="Учебное заведение"
-          handleChange={(value) => {
-            updateArrayValues('institution', value, 'educations');
-          }}
-          value={formValue.educations?.[0].institution}
-        />
-        <InputComponent
-          placeholder="Специальность"
-          handleChange={(value) => {
-            updateArrayValues('specialization', value, 'educations');
-          }}
-          value={formValue.educations?.[0].specialization}
-        />
-      </div>
-      <div className="flex justify-between w-full items-center">
-        <DatePickerComponent
-          handleChange={(value) => {
-            updateArrayValues('specialization', value, 'educations');
-          }}
-          label="Начало обучения "
-          mode="year"
-          value={formValue.educations?.[0].startYear.toString()}
-        />
-        <DatePickerComponent
-          handleChange={(value) => {
-            updateArrayValues('specialization', value, 'educations');
-          }}
-          label="Окончание обучения "
-          mode="year"
-          value={formValue.educations?.[0].finishYear.toString()}
-        />
-      </div>
-      <InputComponent
-        placeholder="Основная информация"
-        handleChange={(value) => {
-          updateArrayValues('mainInformation', value, 'educations');
-        }}
-        value={formValue.educations?.[0].mainInformation}
       />
-      <div className="flex justify-between w-full items-center">
-        <SelectList
-          options={contactsList}
-          value={formValue.contacts?.[0].name || undefined}
-          handleChange={(value) => {
-            updateArrayValues('name', value, 'contacts');
-          }}
-          placeholder="Контакты"
-        />
-        <InputComponent
-          placeholder="Номер"
-          handleChange={(value) => {
-            updateArrayValues('value', value, 'contacts');
-          }}
-          value={formValue.contacts?.[0].value}
-        />
-        <CheckBoxComponent
-          handleChange={(value) => {
-            updateArrayValues('isPrimary', value, 'contacts');
-          }}
-          checkBoxText="Основной контакт"
-        />
-        <Button onClick={() => doubleField()} text="Добавить" />
-      </div>
-      <div className="flex justify-between w-full">
-        <SelectList
-          options={languagesList}
-          value={formValue.languages?.[0].name || undefined}
-          handleChange={(value) => {
-            updateArrayValues('name', value, 'languages');
-          }}
-          placeholder="Языки"
-        />
-        <SelectList
-          options={languageLevelList}
-          value={formValue.languages?.[0].level || undefined}
-          handleChange={(value) => {
-            updateArrayValues('level', value, 'languages');
-          }}
-          placeholder="Уровень владения"
-        />
-        <CheckBoxComponent
-          handleChange={(value) => handleChange('isPrimaryLanguage', value)}
-          checkBoxText="Основной язык"
-        />
-        <Button onClick={() => doubleField()} text="Добавить" />
-      </div>
+      <Education
+        updateArrayValues={updateArrayValues}
+        addField={addField}
+        education={formValue.educations}
+      />
+      <Contacts
+        updateArrayValues={updateArrayValues}
+        addField={addField}
+        contacts={formValue.contacts}
+      />
+      <Languages
+        updateArrayValues={updateArrayValues}
+        addField={addField}
+        languages={formValue.languages}
+      />
       <li style={{ flexBasis: '100%' }}>
         <InputComponent
           placeholder="Навыки"
