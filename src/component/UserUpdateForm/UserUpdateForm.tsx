@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 import { FC } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { Form, Label } from '..';
 import {
   updateContactInfoQuery,
@@ -11,9 +11,11 @@ import {
   updateUserMainInformationQuery,
   updateUserProfileInformationQuery,
 } from '../../api';
+import { alertState } from '../../state/atom/alertState';
 import { userDataQuery } from '../../state/selector/getUserData';
 import { professionalLevelsQuery } from '../../state/selector/professionalLevels';
 import { FormItemType, RadioOption } from '../../types/types';
+import { handleAlert } from '../../utils/handleAlert';
 import {
   ContactsInformationForm,
   EducationInformationForm,
@@ -29,6 +31,7 @@ type UserUpdateFormType = {
 };
 export const UserUpdateForm: FC<UserUpdateFormType> = ({ userId }) => {
   const userData = useRecoilValue(userDataQuery(userId));
+  const [alert, setAlert] = useRecoilState(alertState);
   const professionLevelOption:RadioOption[] = useRecoilValue(professionalLevelsQuery);
   const profileInformation: FormItemType[] = getUserProfileInformation(userData, professionLevelOption);
   return (
@@ -51,7 +54,7 @@ export const UserUpdateForm: FC<UserUpdateFormType> = ({ userId }) => {
             position: values.position,
             workSkillsString: values.workLevelSkills,
             professionalLevelName: values.professionalLevelName,
-          });
+          }).then((response) => handleAlert(response, alert, setAlert));
         }}
       />
        <Label text='Дополнительная информация:' type='title' />
@@ -59,7 +62,7 @@ export const UserUpdateForm: FC<UserUpdateFormType> = ({ userId }) => {
         userId={userId}
         additionalInformation={userData.additionalInfo}
         handleFinish={(data) => {
-          updateUserMainInformationQuery(data);
+          updateUserMainInformationQuery(data).then((response) => handleAlert(response, alert, setAlert));
         }}
       />
       <Label text='Контакты:' type='title' />
@@ -67,7 +70,7 @@ export const UserUpdateForm: FC<UserUpdateFormType> = ({ userId }) => {
         userId={userId}
         contacts={userData.contactInfo}
         handleFinish={(data) => {
-          updateContactInfoQuery(data);
+          updateContactInfoQuery(data).then((response) => handleAlert(response, alert, setAlert));
         }}
       />
       <Label text='Языки:' type='title' />
@@ -75,7 +78,7 @@ export const UserUpdateForm: FC<UserUpdateFormType> = ({ userId }) => {
         userId={userId}
         languages={userData.languageInfo}
         handleFinish={(data) => {
-          updateLanguagesInfoQuery(data);
+          updateLanguagesInfoQuery(data).then((response) => handleAlert(response, alert, setAlert));
         }}
       />
       <Label text='Навыки:' type='title' />
@@ -83,7 +86,7 @@ export const UserUpdateForm: FC<UserUpdateFormType> = ({ userId }) => {
         skills={userData.skillInfo}
         userId={userId}
         handleFinish={(data) => {
-          updateSkillsInfoQuery(data);
+          updateSkillsInfoQuery(data).then((response) => handleAlert(response, alert, setAlert));
         }}
       />
       <Label text='Образование:' type='title' />
@@ -91,7 +94,7 @@ export const UserUpdateForm: FC<UserUpdateFormType> = ({ userId }) => {
         userId={userId}
         education={userData.educationInfo}
         handleFinish={(data) => {
-          updateEducationInfoQuery(data);
+          updateEducationInfoQuery(data).then((response) => handleAlert(response, alert, setAlert));
         }}
       />
        <Label text='Проекты:' type='title' />
@@ -99,7 +102,7 @@ export const UserUpdateForm: FC<UserUpdateFormType> = ({ userId }) => {
         projects={userData.projectInfo}
         userId={userId}
         handleFinish={(data) => {
-          updateProjectInfoQuery(data);
+          updateProjectInfoQuery(data).then((response) => handleAlert(response, alert, setAlert));
         }}
       />
     </div>

@@ -27,11 +27,11 @@ export const MainInformationForm: FC<MainInformationFormType> = ({
   return (
     <form>
       {mainInfo.map((item, index) => (
-        <div key={index} className = 'flex flex-col gap-3 border-2 mb-8 p-4 w-9/12'>
+        <div key={item.title} className = 'flex flex-col gap-3 border-2 mb-8 p-4 w-9/12'>
           <Input
           className='w-full'
             value={item.title}
-            placeholder="sdfsdf"
+            placeholder={item.title}
             handleChange={(e) => {
               handleChange('title', index, e);
             }}
@@ -41,7 +41,7 @@ export const MainInformationForm: FC<MainInformationFormType> = ({
             autoSize={false}
             rows={5}
             value={item.description}
-            placeholder="sdfsdf"
+            placeholder={item.description}
             handleChange={(e) => {
               handleChange('description', index, e);
             }}

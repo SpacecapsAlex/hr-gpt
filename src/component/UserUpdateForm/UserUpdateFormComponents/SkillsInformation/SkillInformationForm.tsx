@@ -34,7 +34,7 @@ export const SkillInformationForm: FC<SkillInformationFormType> = ({
       />
       <div className="flex gap-3 mt-8">
         <Input
-          placeholder=""
+          placeholder="Введите навык"
           value={inputValue}
           handleChange={(e) => setInputValue(e)}
           className="w-40"

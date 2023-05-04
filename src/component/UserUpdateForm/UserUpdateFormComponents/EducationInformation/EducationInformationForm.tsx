@@ -28,7 +28,7 @@ export const EducationInformationForm:FC<EducationInformationFormType> = ({ educ
   return (
         <form>
       {mainInfo.map((item, index) => (
-        <div key={index} className = 'flex flex-col gap-3 border-2 mb-8 p-4 w-9/12'>
+        <div key={item.EducationTypeName} className = 'flex flex-col gap-3 border-2 mb-8 p-4 w-9/12'>
           <SelectList
           defaultValue={item.EducationTypeName}
           options={educationOptopns}
@@ -43,7 +43,7 @@ export const EducationInformationForm:FC<EducationInformationFormType> = ({ educ
           <Input
           className='w-full'
             value={item.institution}
-            placeholder="sdfsdf"
+            placeholder={item.institution}
             handleChange={(e) => {
               handleChange('institution', index, e);
             }}
@@ -58,7 +58,7 @@ export const EducationInformationForm:FC<EducationInformationFormType> = ({ educ
           <Input
           className='w-40'
           value={`${item.startYear}`}
-          placeholder="sdfsdf"
+          placeholder={`${item.startYear}`}
           handleChange={(e) => {
             handleChange('startYear', index, +e);
           }}
@@ -67,7 +67,7 @@ export const EducationInformationForm:FC<EducationInformationFormType> = ({ educ
           <Input
           className='w-40'
             value={`${item.finishYear}`}
-            placeholder="sdfsdf"
+            placeholder={`${item.finishYear}`}
             handleChange={(e) => {
               handleChange('finishYear', index, +e);
             }}
@@ -79,7 +79,7 @@ export const EducationInformationForm:FC<EducationInformationFormType> = ({ educ
             <Input
           className='w-full'
             value={item.specialization}
-            placeholder="sdfsdf"
+            placeholder={item.specialization}
             handleChange={(e) => {
               handleChange('specialization', index, e);
             }}
@@ -91,7 +91,7 @@ export const EducationInformationForm:FC<EducationInformationFormType> = ({ educ
             value={item.mainInformation}
             rows={5}
             autoSize={false}
-            placeholder="sdfsdf"
+            placeholder={item.mainInformation}
             handleChange={(e) => {
               handleChange('mainInformation', index, e);
             }}

@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { RecoilRoot } from 'recoil';
 import { EducationInformationForm } from '..';
 
-const educ = [{
+const education = [{
   startYear: 2018,
   finishYear: 2021,
   institution: 'qweqwe',
@@ -36,7 +36,7 @@ export default {
 export const EducationInformationComponent:ComponentStory<typeof EducationInformationForm> = (args) => <RecoilRoot><EducationInformationForm {...args} /></RecoilRoot>;
 
 EducationInformationComponent.args = {
-  education: educ,
+  education,
   handleFinish: (data) => {
     console.log(data);
   },

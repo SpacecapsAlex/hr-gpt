@@ -23,11 +23,11 @@ export const ContactsInformationForm:FC<ContactsInformationFormType> = ({ contac
   return (
     <form>
     {mainInfo.map((item, index) => (
-      <div key={index} className = 'flex flex-col gap-3 border-2 mb-8 p-4 w-9/12'>
+      <div key={item.name} className = 'flex flex-col gap-3 border-2 mb-8 p-4 w-9/12'>
         <Input
         className='w-full'
           value={item.name}
-          placeholder="sdfsdf"
+          placeholder={item.name}
           handleChange={(e) => {
             handleChange('name', index, e);
           }}
@@ -35,7 +35,7 @@ export const ContactsInformationForm:FC<ContactsInformationFormType> = ({ contac
         <Input
         className='w-full'
           value={item.value}
-          placeholder="sdfsdf"
+          placeholder={item.value}
           handleChange={(e) => {
             handleChange('value', index, e);
           }}

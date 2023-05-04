@@ -2,14 +2,14 @@ import axios from 'axios';
 import { UpdateUserMainInformationType } from '../../types/types';
 
 export const updateUserMainInformationQuery = async (
-  userMainInformation: UpdateUserMainInformationType,
+  { userId, information }: UpdateUserMainInformationType,
 ) => {
   try {
     const response = await axios.put(
       'http://spacecapsalex-002-site1.atempurl.com/User/UpdateUserMainInformation',
       {
-        userId: userMainInformation.userId,
-        information: userMainInformation.information,
+        userId,
+        information,
       },
     );
     return response.status;

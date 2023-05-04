@@ -56,7 +56,7 @@ export const ProjectsInformationForm: FC<ProjectsInformationFormType> = ({
     setMainInfo(changedArray);
     setResponsebilitiesInputValue('');
   };
-  const handleDaleteTag = (projectIndex:number, tag: string) => {
+  const handleDeleteTag = (projectIndex:number, tag: string) => {
     const changedArray: ProjectType[] = Object.assign([], mainInfo);
     changedArray[projectIndex] = {
       ...changedArray[projectIndex],
@@ -69,13 +69,13 @@ export const ProjectsInformationForm: FC<ProjectsInformationFormType> = ({
   return (
     <form>
       {mainInfo.map((item, index) => (
-        <div className='flex flex-col gap-3 border-2 mb-8 p-4 w-9/12'>
+        <div key={item.name} className='flex flex-col gap-3 border-2 mb-8 p-4 w-9/12'>
           <div>
             <div>Название проекта</div>
             <Input
               className="w-full"
               value={item.name}
-              placeholder="sdfsdf"
+              placeholder={item.name}
               handleChange={(e) => {
                 handleChange('name', index, e);
               }}
@@ -105,7 +105,7 @@ export const ProjectsInformationForm: FC<ProjectsInformationFormType> = ({
             <Input
               className="w-full"
               value={item.time}
-              placeholder="sdfsdf"
+              placeholder={item.time}
               handleChange={(e) => {
                 handleChange('time', index, e);
               }}
@@ -116,7 +116,7 @@ export const ProjectsInformationForm: FC<ProjectsInformationFormType> = ({
             <Input
               className="w-full"
               value={item.position}
-              placeholder="sdfsdf"
+              placeholder={item.position}
               handleChange={(e) => {
                 handleChange('position', index, e);
               }}
@@ -129,7 +129,7 @@ export const ProjectsInformationForm: FC<ProjectsInformationFormType> = ({
               autoSize={false}
               rows={5}
               value={item.description}
-              placeholder="sdfsdf"
+              placeholder={item.description}
               handleChange={(e) => {
                 handleChange('description', index, e);
               }}
@@ -142,7 +142,7 @@ export const ProjectsInformationForm: FC<ProjectsInformationFormType> = ({
               autoSize={false}
               rows={5}
               value={item.someInformation}
-              placeholder="sdfsdf"
+              placeholder={item.someInformation}
               handleChange={(e) => {
                 handleChange('someInformation', index, e);
               }}
@@ -155,7 +155,7 @@ export const ProjectsInformationForm: FC<ProjectsInformationFormType> = ({
               autoSize={false}
               rows={5}
               value={item.mainInformation}
-              placeholder="sdfsdf"
+              placeholder={item.mainInformation}
               handleChange={(e) => {
                 handleChange('mainInformation', index, e);
               }}
@@ -199,7 +199,7 @@ export const ProjectsInformationForm: FC<ProjectsInformationFormType> = ({
             tagsValue={item.skills}
             isClosable={true}
             handleClose={(tag) => {
-              handleDaleteTag(index, tag);
+              handleDeleteTag(index, tag);
             }}
           />
           <div className="flex gap-3 mt-8">

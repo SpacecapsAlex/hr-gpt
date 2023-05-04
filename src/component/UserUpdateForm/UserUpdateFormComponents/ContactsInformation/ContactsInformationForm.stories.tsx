@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ContactsInformationForm } from '..';
 
-const contat = [
+const contacts = [
   {
     name: 'telegram',
     value: 'kek',
@@ -30,5 +30,5 @@ ContactsInformationFormComponent.args = {
   handleFinish: (data) => {
     console.log(data);
   },
-  contacts: contat,
+  contacts,
 };

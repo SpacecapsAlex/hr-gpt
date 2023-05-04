@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { MainInformationForm } from '..';
 import { AdditionalInformationType } from '../../../../types/types';
 
-const mock: AdditionalInformationType[] = [
+const additionalInformation: AdditionalInformationType[] = [
   {
     title: '123',
     description: 'dkjadhkasjdhgjhbschbascilasnckasjn',
@@ -27,7 +27,7 @@ export const MainInformationFormComponent: ComponentStory<
 > = (args) => <MainInformationForm {...args} />;
 
 MainInformationFormComponent.args = {
-  additionalInformation: mock,
+  additionalInformation,
   handleFinish: (data) => {
     console.log(data);
   },

@@ -23,11 +23,11 @@ export const LanguagesInformationForm:FC<LanguagesInformationFormType> = ({ lang
   return (
     <form>
     {mainInfo.map((item, index) => (
-      <div key={index} className = 'flex flex-col gap-3 border-2 mb-8 p-4 w-9/12'>
+      <div key={item.name} className = 'flex flex-col gap-3 border-2 mb-8 p-4 w-9/12'>
         <Input
         className='w-full'
           value={item.name}
-          placeholder="sdfsdf"
+          placeholder={item.name}
           handleChange={(e) => {
             handleChange('name', index, e);
           }}
@@ -35,7 +35,7 @@ export const LanguagesInformationForm:FC<LanguagesInformationFormType> = ({ lang
         <Input
         className='w-full'
           value={item.level}
-          placeholder="sdfsdf"
+          placeholder={item.level}
           handleChange={(e) => {
             handleChange('level', index, e);
           }}

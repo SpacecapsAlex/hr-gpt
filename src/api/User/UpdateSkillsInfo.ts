@@ -2,14 +2,14 @@ import axios from 'axios';
 import { UpdateUserSkillsType } from '../../types/types';
 
 export const updateSkillsInfoQuery = async (
-  skillsInfo: UpdateUserSkillsType,
+  { userId, skills }: UpdateUserSkillsType,
 ) => {
   try {
     const response = await axios.put(
       'http://spacecapsalex-002-site1.atempurl.com/User/UpdateSkills',
       {
-        userId: skillsInfo.userId,
-        skills: skillsInfo.skills,
+        userId,
+        skills,
       },
     );
     return response.status;

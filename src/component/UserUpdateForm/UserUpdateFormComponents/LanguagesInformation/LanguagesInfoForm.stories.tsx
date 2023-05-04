@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { LanguagesInformationForm } from '..';
 
-const lang = [
+const languages = [
   {
     name: 'english',
     level: 'b1',
@@ -25,5 +25,5 @@ LanguagesInformationFormComponent.args = {
   handleFinish: (data) => {
     console.log(data);
   },
-  languages: lang,
+  languages,
 };
