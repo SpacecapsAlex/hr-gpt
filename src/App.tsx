@@ -20,7 +20,6 @@ export const App = () => {
   const [modal, setModal] = useRecoilState(modalState);
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const loginData = localStorage.getItem('userData');
-  console.log(loginData);
   useEffect(() => {
     setMenuItems(menuItemsStart);
   }, []);
