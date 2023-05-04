@@ -10,5 +10,5 @@ export const TagsComponent: ComponentStory<typeof Tags> = (args) => <Tags {...ar
 
 TagsComponent.args = {
   tagsValue: ['tag 1', 'tag 2', 'tag 3'],
-  handleClose: (index: number) => { console.log(index); },
+  handleClose: (index: string) => { console.log(index); },
 };

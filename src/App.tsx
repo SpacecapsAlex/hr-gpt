@@ -1,14 +1,16 @@
 import { Layout, Menu } from 'antd';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-
+import { Route, Routes } from 'react-router-dom';
 import { menuItemsStart } from './AppConstants';
 import { menuItemsState } from './state/atom/menuState';
 import { modalState } from './state/atom/modalState';
 import { alertState } from './state/atom/alertState';
-import { Alert, Modal, UserCreateForm } from './component';
-
+import { Alert, Modal } from './component';
+import { Paths } from './constants/path';
+import { LoginPage } from './pages/LoginPage/LoginPage';
 import './App.css';
+import { CandidateTablePage } from './pages';
 
 const { Header, Sider, Content } = Layout;
 
@@ -17,7 +19,7 @@ export const App = () => {
   const [alert, setAlert] = useRecoilState(alertState);
   const [modal, setModal] = useRecoilState(modalState);
   const [collapsed, setCollapsed] = useState<boolean>(false);
-
+  const loginData = localStorage.getItem('userData');
   useEffect(() => {
     setMenuItems(menuItemsStart);
   }, []);
@@ -74,8 +76,11 @@ export const App = () => {
       <Layout className="site-layout">
         <Header>HEADER</Header>
         <Content>
-          CONTENT
-          <UserCreateForm />
+        <Routes>
+          <Route path={Paths.main} element={loginData ? <CandidateTablePage /> : <LoginPage />} />
+          <Route path={Paths.login} element={<LoginPage />} />
+          <Route path={Paths.login} element={<CandidateTablePage />} />
+        </Routes>
         </Content>
       </Layout>
     </Layout>

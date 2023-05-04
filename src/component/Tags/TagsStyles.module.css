@@ -1,0 +1,4 @@
+.closeIcon :global .ant-tag-close-icon{
+  margin-inline-start: 3px;
+  bottom: 120px
+}

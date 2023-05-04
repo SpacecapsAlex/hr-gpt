@@ -114,7 +114,7 @@ export const FormComponent: FC<FormComponentType> = ({
               isLoading={formItem.isLoading}
               isAbleClear={formItem.isAbleClear}
               isSearch={formItem.isSearch}
-              handleChange={(value) => handleChange(formItem.name, value)}
+              handleChange={(value: string) => handleChange(formItem.name, value)}
               handleSearch={formItem.handleSearch}
               placeholder={formItem.placeholder}
               mode={formItem.mode}

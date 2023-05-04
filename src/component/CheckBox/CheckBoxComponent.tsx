@@ -7,12 +7,13 @@ export const CheckBoxComponent: FC<CheckBoxType> = ({
   handleChange,
   checkBoxText,
   className,
+  value = false,
 }) => {
   const onChange = (e: CheckboxChangeEvent) => {
     handleChange(e.target.checked);
   };
   return (
-    <Checkbox className={className} onChange={onChange}>
+    <Checkbox className={className} onChange={onChange} checked={value}>
       {checkBoxText}
     </Checkbox>
   );
