@@ -28,7 +28,8 @@ export const LoginForm = () => {
     <Form
       formItems={loginItems}
       buttonText="Войти"
-      classNameWrapper="border-2 flex flex-col gap-4 mb-8 p-4 w-9/12"
+      classNameWrapper="border-2 mx-auto mb-8 p-4 w-3/5 "
+      classNameItem='my-4 flex justify-center'
       handleFinish={(values) => handleLogin(values)}
       classNameButton="w-20"
     />
