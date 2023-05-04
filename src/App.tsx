@@ -6,7 +6,7 @@ import { menuItemsStart } from './AppConstants';
 import { menuItemsState } from './state/atom/menuState';
 import { modalState } from './state/atom/modalState';
 import { alertState } from './state/atom/alertState';
-import { Alert, Modal } from './component';
+import { Alert, Modal, UserCreateForm } from './component';
 import { Paths } from './constants/path';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import './App.css';
@@ -76,11 +76,15 @@ export const App = () => {
       <Layout className="site-layout">
         <Header>HEADER</Header>
         <Content>
-        <Routes>
-          <Route path={Paths.main} element={loginData ? <CandidateTablePage /> : <LoginPage />} />
-          <Route path={Paths.login} element={<LoginPage />} />
-          <Route path={Paths.login} element={<CandidateTablePage />} />
-        </Routes>
+          <Routes>
+            <Route
+              path={Paths.main}
+              element={loginData ? <CandidateTablePage /> : <LoginPage />}
+            />
+            <Route path={Paths.login} element={<LoginPage />} />
+            <Route path={Paths.login} element={<CandidateTablePage />} />
+          </Routes>
+          <UserCreateForm />
         </Content>
       </Layout>
     </Layout>

@@ -8,6 +8,7 @@ type LabelType = {
   titleLevel?: 1 | 2 | 3 | 4 | 5;
   isEditable?: BlockProps['editable'];
   isCopyable?: BlockProps['copyable'];
+  className?: string;
 };
 
 const { Title, Paragraph } = Typography;
@@ -18,6 +19,7 @@ export const Label: FC<LabelType> = ({
   isEditable,
   isCopyable,
   type,
+  className,
 }) => (
   <>
     {type === 'title' ? (
@@ -25,7 +27,7 @@ export const Label: FC<LabelType> = ({
         level={titleLevel}
         editable={isEditable}
         copyable={isCopyable}
-        className="flex items-end"
+        className={className}
       >
         {text}
       </Title>

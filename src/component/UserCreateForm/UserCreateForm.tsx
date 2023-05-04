@@ -18,6 +18,7 @@ import { Professional } from './Professional/Professional';
 import { Button } from '../Button/Button';
 
 import styles from './styles.module.css';
+import { Label } from '../Label/Label';
 
 export const UserCreateForm: FC = () => {
   const [formValue, setFormValue] = useState<CreateUserType>(initialValues);
@@ -76,6 +77,7 @@ export const UserCreateForm: FC = () => {
 
   return (
     <ul className={styles.wrapper}>
+      <Label text="Общая информация:" type="title" titleLevel={5} />
       <Personal
         handleChange={handleChange}
         firstName={firstName}
@@ -83,11 +85,23 @@ export const UserCreateForm: FC = () => {
         lastName={lastName}
         birthday={birthday}
       />
+      <Label
+        text="Локация:"
+        type="title"
+        titleLevel={5}
+        className={styles.base}
+      />
       <Location
         handleChange={handleChange}
         citizenship={citizenship}
         country={country}
         city={city}
+      />
+      <Label
+        text="Профессиональная информация:"
+        type="title"
+        titleLevel={5}
+        className={styles.base}
       />
       <Professional
         handleChange={handleChange}
@@ -95,15 +109,33 @@ export const UserCreateForm: FC = () => {
         professionalLevel={professionalLevel}
         workLevelSkill={workLevelSkill}
       />
+      <Label
+        text="Образование:"
+        type="title"
+        titleLevel={5}
+        className={styles.base}
+      />
       <Education
         updateArrayValues={updateArrayValues}
         addField={addField}
         education={formValue.educations}
       />
+      <Label
+        text="Контакты:"
+        type="title"
+        titleLevel={5}
+        className={styles.base}
+      />
       <Contacts
         updateArrayValues={updateArrayValues}
         addField={addField}
         contacts={formValue.contacts}
+      />
+      <Label
+        text="Языки:"
+        type="title"
+        titleLevel={5}
+        className={styles.base}
       />
       <Languages
         updateArrayValues={updateArrayValues}
