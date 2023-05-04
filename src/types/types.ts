@@ -272,3 +272,19 @@ export type LoginFormType = {
   login: string;
   password: string;
 };
+
+export type CadidatesType = {
+  userId: string,
+  firstName: string,
+  surName: string,
+  city: string,
+  country: string,
+  workExperience: number,
+  workLevel: string,
+  position: string
+};
+
+export type CadidateTableType = {
+  totalItems: number;
+  users:CadidatesType[]
+};

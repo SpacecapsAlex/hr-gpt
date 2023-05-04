@@ -13,7 +13,7 @@ export const LoginForm = () => {
   const handleLogin = (value: LoginFormType) => {
     LoginQuerry(value).then((response) => {
       localStorage.setItem('userData', JSON.stringify(response));
-      href(Paths.main);
+      href(Paths.condidates);
     }).catch((error) => {
       setAlert({
         ...alert,

@@ -10,6 +10,7 @@ import { Alert, Modal } from './component';
 import { Paths } from './constants/path';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import './App.css';
+import { CandidateTablePage } from './pages';
 
 const { Header, Sider, Content } = Layout;
 
@@ -18,7 +19,8 @@ export const App = () => {
   const [alert, setAlert] = useRecoilState(alertState);
   const [modal, setModal] = useRecoilState(modalState);
   const [collapsed, setCollapsed] = useState<boolean>(false);
-
+  const loginData = localStorage.getItem('userData');
+  console.log(loginData);
   useEffect(() => {
     setMenuItems(menuItemsStart);
   }, []);
@@ -76,8 +78,9 @@ export const App = () => {
         <Header>HEADER</Header>
         <Content>
         <Routes>
-          <Route path={Paths.main} element={<div>MainPage</div>} />
+          <Route path={Paths.main} element={loginData ? <CandidateTablePage /> : <LoginPage />} />
           <Route path={Paths.login} element={<LoginPage />} />
+          <Route path={Paths.login} element={<CandidateTablePage />} />
         </Routes>
         </Content>
       </Layout>

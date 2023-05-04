@@ -47,7 +47,6 @@ export const Button: FC<ButtonPropsType> = ({
     href={href}
     size={size}
     onClick={onClick}
-    className={className}
   >
     {text}
   </ButtonComponent>
