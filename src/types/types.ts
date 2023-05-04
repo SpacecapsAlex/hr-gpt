@@ -48,7 +48,7 @@ export type ScrollTableType = {
 };
 
 export type FormItemType = {
-  itemType: 'checkBox' | 'datePicker' | 'input' | 'radio' | 'select';
+  itemType: 'checkBox' | 'datePicker' | 'input' | 'radio' | 'select' | 'tags';
   itemText?: string;
   handleChange?: (
     value: string | boolean | React.ChangeEvent<HTMLTextAreaElement>,
@@ -59,7 +59,7 @@ export type FormItemType = {
   className?: string;
   options?: RadioOption[];
   defaultValue?: string;
-  value?: string | boolean | number;
+  value?: string | boolean | number | string[];
   isLoading?: boolean;
   isAbleClear?: boolean;
   isSearch?: boolean;
@@ -74,6 +74,7 @@ export type FormItemType = {
   addButton?: boolean;
   addButtonText?: string;
   flexBasis?: string;
+  tags?: string[]
 };
 
 export type FormComponentType = {
@@ -287,4 +288,23 @@ export type CadidatesType = {
 export type CadidateTableType = {
   totalItems: number;
   users:CadidatesType[]
+};
+
+export type FilterSettingsType = {
+  firstName: string;
+  surName:string;
+  age:number | null;
+  citizenship: string;
+  location:string;
+  professionalLevel: string;
+  workExperience: number | null;
+  skills: string[];
+  languges:string[];
+};
+
+export type CandidatesTableType = {
+  countItems: number;
+  currentPage:number;
+  searchString:string;
+  filterSettings:FilterSettingsType;
 };
