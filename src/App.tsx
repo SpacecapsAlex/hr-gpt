@@ -1,13 +1,14 @@
 import { Layout, Menu } from 'antd';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-
+import { Route, Routes } from 'react-router-dom';
 import { menuItemsStart } from './AppConstants';
 import { menuItemsState } from './state/atom/menuState';
 import { modalState } from './state/atom/modalState';
 import { alertState } from './state/atom/alertState';
-import { Alert, Modal, UserCreateForm } from './component';
-
+import { Alert, Modal } from './component';
+import { Paths } from './constants/path';
+import { LoginPage } from './pages/LoginPage/LoginPage';
 import './App.css';
 
 const { Header, Sider, Content } = Layout;
@@ -74,8 +75,10 @@ export const App = () => {
       <Layout className="site-layout">
         <Header>HEADER</Header>
         <Content>
-          CONTENT
-          <UserCreateForm />
+        <Routes>
+          <Route path={Paths.main} element={<div>MainPage</div>} />
+          <Route path={Paths.login} element={<LoginPage />} />
+        </Routes>
         </Content>
       </Layout>
     </Layout>

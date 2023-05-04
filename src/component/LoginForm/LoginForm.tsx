@@ -1,18 +1,19 @@
+import { useNavigate } from 'react-router';
 import { useRecoilState } from 'recoil';
 import { Form } from '..';
 import { LoginQuerry } from '../../api/login';
+import { Paths } from '../../constants/path';
 import { alertState } from '../../state/atom/alertState';
 import { LoginFormType } from '../../types/types';
 import { loginItems } from './LoginFormConstants';
 
 export const LoginForm = () => {
+  const href = useNavigate();
   const [alert, setAlert] = useRecoilState(alertState);
   const handleLogin = (value: LoginFormType) => {
-    LoginQuerry(value).then(() => {
-      setAlert({
-        ...alert,
-        isShow: true,
-      });
+    LoginQuerry(value).then((response) => {
+      localStorage.setItem('userData', JSON.stringify(response));
+      href(Paths.main);
     }).catch((error) => {
       setAlert({
         ...alert,
