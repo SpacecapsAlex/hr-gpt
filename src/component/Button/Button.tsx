@@ -35,6 +35,7 @@ export const Button: FC<ButtonPropsType> = ({
   onClick,
 }) => (
   <ButtonComponent
+    className={className}
     type={type}
     loading={isLoading}
     icon={icon}

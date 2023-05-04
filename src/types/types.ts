@@ -82,6 +82,7 @@ export type FormComponentType = {
   classNameWrapper: string;
   buttonText: string;
   classNameItem?: string;
+  classNameButton?:string
 };
 
 export type UpdateUserProfileInformationType = {
@@ -266,3 +267,8 @@ export type ArrayKeys =
   | 'someInformation'
   | 'responsibilities'
   | 'skills';
+
+export type LoginFormType = {
+  login: string;
+  password: string;
+};
