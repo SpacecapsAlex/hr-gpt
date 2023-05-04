@@ -1,5 +1,6 @@
 /* eslint-disable max-lines */
 import { FormItemType } from '../../types/types';
+import { cloneDeep } from '../../utils/utils';
 
 export const countryList = [
   { value: 'Беларусь', label: 'Беларусь' },
@@ -24,7 +25,6 @@ export const workLevelList = [
   { value: '0', label: '0' },
   { value: '1', label: '2' },
   { value: '3', label: '3' },
-  { value: 'Более 3-х лет', label: 'Более 3-х лет' },
 ];
 
 export const educationList = [
@@ -55,14 +55,6 @@ export const languageLevelList = [
 ];
 
 export const initialValues = {
-  firstName: '',
-  surName: '',
-  lastName: '',
-  citizenship: '',
-  country: '',
-  city: '',
-  position: '',
-  professionalLevel: '',
   additional: [
     {
       title: '',
@@ -83,14 +75,14 @@ export const initialValues = {
     {
       name: '',
       value: '',
-      isPrimary: false,
+      isMain: false,
     },
   ],
   languages: [
     {
       name: '',
       level: '',
-      isPrimary: false,
+      isMain: false,
     },
   ],
   skills: [
@@ -99,20 +91,22 @@ export const initialValues = {
     },
   ],
   projects: [
-    {
-      name: '',
-      startDate: '2023-01-10',
-      endDate: '2023-01-10',
-      time: '',
-      position: '',
-      description: '',
-      someInformation: '',
-      mainInformation: '',
-      // responsibilities: string[];
-      // skills: string[];
-    },
+    // {
+    //   name: '',
+    //   startDate: '2023-01-10',
+    //   endDate: '2023-01-10',
+    //   time: '',
+    //   position: '',
+    //   description: '',
+    //   someInformation: '',
+    //   mainInformation: '',
+    // responsibilities: string[];
+    // skills: string[];
+    // },
   ],
 };
+
+export const deepCopyInitial = cloneDeep(initialValues);
 
 export const createUserItems: FormItemType[] = [
   {

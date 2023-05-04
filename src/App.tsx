@@ -76,11 +76,14 @@ export const App = () => {
       <Layout className="site-layout">
         <Header>HEADER</Header>
         <Content>
-        <Routes>
-          <Route path={Paths.main} element={loginData ? <CandidateTablePage /> : <LoginPage />} />
-          <Route path={Paths.login} element={<LoginPage />} />
-          <Route path={Paths.login} element={<CandidateTablePage />} />
-        </Routes>
+          <Routes>
+            <Route
+              path={Paths.main}
+              element={loginData ? <CandidateTablePage /> : <LoginPage />}
+            />
+            <Route path={Paths.login} element={<LoginPage />} />
+            <Route path={Paths.login} element={<CandidateTablePage />} />
+          </Routes>
         </Content>
       </Layout>
     </Layout>
