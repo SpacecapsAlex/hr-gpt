@@ -14,13 +14,11 @@ export const candidateTableDataQuery:RecoilValueReadOnly<CadidateTableType> = se
           countItems: tableData.countItems,
           currentPage: tableData.currentPage,
           searchString: tableData.searchString,
-          filterSettings: {
-            firstName: tableData.filterSettings.firstName,
-            surName: tableData.filterSettings.surName,
-            citizenship: tableData.filterSettings.citizenship,
-            location: tableData.filterSettings.location,
-            professionalLevel: tableData.filterSettings.professionalLevel,
-          },
+          firstName: tableData.filterSettings.firstName,
+          surName: tableData.filterSettings.surName,
+          citizenship: tableData.filterSettings.citizenship,
+          location: tableData.filterSettings.location,
+          professionalLevel: tableData.filterSettings.professionalLevel,
         },
       },
     );
