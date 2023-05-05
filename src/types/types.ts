@@ -177,8 +177,8 @@ export type GetUserType = {
   country: string;
   city: string;
   position: string;
-  workLevel: string;
-  workSkillsString: number;
+  professionalLevelName: string;
+  workLevelSkills: number;
   additionalInfo: AdditionalInformationType[];
   educationInfo: EducationUserType[];
   contactInfo: ContactType[];

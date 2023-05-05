@@ -84,7 +84,9 @@ export const App = () => {
             />
             <Route path={Paths.login} element={<LoginPage />} />
             <Route path={Paths.login} element={<CandidateTablePage />} />
-            <Route path={Paths.updateUser} element={<Suspense><UserUpdateForm userId='B940833A-99A3-47DC-8516-DA3038BDABCA' /></Suspense>} />
+            <Route path={Paths.updateUser} element={<Suspense><UserUpdateForm /></Suspense>} >
+              <Route path={`${Paths.updateUser}:userId`} element={<Suspense><UserUpdateForm /></Suspense>}/>
+            </Route>
           </Routes>
         </Content>
       </Layout>

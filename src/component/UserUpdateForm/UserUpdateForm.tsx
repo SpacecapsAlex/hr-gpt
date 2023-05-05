@@ -1,5 +1,6 @@
 /* eslint-disable max-lines */
 import { FC } from 'react';
+import { useParams } from 'react-router';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { Form, Label } from '..';
 import {
@@ -26,11 +27,9 @@ import {
 } from './UserUpdateFormComponents';
 import { getUserProfileInformation } from './UserUpdateProfileName';
 
-type UserUpdateFormType = {
-  userId: string;
-};
-export const UserUpdateForm: FC<UserUpdateFormType> = ({ userId }) => {
-  const userData = useRecoilValue(userDataQuery(userId));
+export const UserUpdateForm: FC = () => {
+  const { userId } = useParams();
+  const userData = useRecoilValue(userDataQuery(userId ?? ''));
   const [alert, setAlert] = useRecoilState(alertState);
   const professionLevelOption:RadioOption[] = useRecoilValue(professionalLevelsQuery);
   const profileInformation: FormItemType[] = getUserProfileInformation(userData, professionLevelOption);
@@ -43,7 +42,7 @@ export const UserUpdateForm: FC<UserUpdateFormType> = ({ userId }) => {
         formItems={profileInformation}
         handleFinish={(values) => {
           updateUserProfileInformationQuery({
-            userId,
+            userId: userId ?? '',
             firstName: values.firstName,
             surName: values.surName,
             lastName: values.lastName,
@@ -59,7 +58,7 @@ export const UserUpdateForm: FC<UserUpdateFormType> = ({ userId }) => {
       />
        <Label text='Дополнительная информация:' type='title' />
       <MainInformationForm
-        userId={userId}
+        userId={userId ?? ''}
         additionalInformation={userData.additionalInfo}
         handleFinish={(data) => {
           updateUserMainInformationQuery(data).then((response) => handleAlert(response, alert, setAlert));
@@ -67,7 +66,7 @@ export const UserUpdateForm: FC<UserUpdateFormType> = ({ userId }) => {
       />
       <Label text='Контакты:' type='title' />
       <ContactsInformationForm
-        userId={userId}
+        userId={userId ?? ''}
         contacts={userData.contactInfo}
         handleFinish={(data) => {
           updateContactInfoQuery(data).then((response) => handleAlert(response, alert, setAlert));
@@ -75,7 +74,7 @@ export const UserUpdateForm: FC<UserUpdateFormType> = ({ userId }) => {
       />
       <Label text='Языки:' type='title' />
       <LanguagesInformationForm
-        userId={userId}
+        userId={userId ?? ''}
         languages={userData.languageInfo}
         handleFinish={(data) => {
           updateLanguagesInfoQuery(data).then((response) => handleAlert(response, alert, setAlert));
@@ -84,14 +83,14 @@ export const UserUpdateForm: FC<UserUpdateFormType> = ({ userId }) => {
       <Label text='Навыки:' type='title' />
       <SkillInformationForm
         skills={userData.skillInfo}
-        userId={userId}
+        userId={userId ?? ''}
         handleFinish={(data) => {
           updateSkillsInfoQuery(data).then((response) => handleAlert(response, alert, setAlert));
         }}
       />
       <Label text='Образование:' type='title' />
       <EducationInformationForm
-        userId={userId}
+        userId={userId ?? ''}
         education={userData.educationInfo}
         handleFinish={(data) => {
           updateEducationInfoQuery(data).then((response) => handleAlert(response, alert, setAlert));
@@ -100,7 +99,7 @@ export const UserUpdateForm: FC<UserUpdateFormType> = ({ userId }) => {
        <Label text='Проекты:' type='title' />
       <ProjectsInformationForm
         projects={userData.projectInfo}
-        userId={userId}
+        userId={userId ?? ''}
         handleFinish={(data) => {
           updateProjectInfoQuery(data).then((response) => handleAlert(response, alert, setAlert));
         }}

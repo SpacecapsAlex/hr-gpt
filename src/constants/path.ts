@@ -1,6 +1,6 @@
 export const enum Paths {
   main = '/',
-  login = 'login',
-  condidates = 'condidates',
-  updateUser = 'updateUser',
+  login = '/login',
+  condidates = '/condidates',
+  updateUser = '/updateUser',
 }

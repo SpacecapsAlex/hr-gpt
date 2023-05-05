@@ -73,7 +73,9 @@ export const FormComponent: FC<FormComponentType> = ({
             />
           )}
           {formItem.itemType === 'input' && (
-            <InputComponent
+           <div>
+             <div>{formItem.label}</div>
+              <InputComponent
               placeholder={formItem.placeholder ?? ''}
               handleChange={(value) => handleChange(formItem.name, value)}
               value={
@@ -84,6 +86,7 @@ export const FormComponent: FC<FormComponentType> = ({
                 ] ?? formItem.value
               }
             />
+           </div>
           )}
           {formItem.itemType === 'radio' && (
             <RadioButtonGroup

@@ -40,10 +40,18 @@ export const ProjectsInformationForm: FC<ProjectsInformationFormType> = ({
   };
   const handleAddResponibilities = (projectIndex: number, value: string) => {
     const changedArray: ProjectType[] = Object.assign([], mainInfo);
-    changedArray[projectIndex] = {
-      ...changedArray[projectIndex],
-      responsibilities: [...changedArray[projectIndex].responsibilities, value],
-    };
+    if (changedArray[projectIndex].responsibilities === null) {
+      changedArray[projectIndex] = {
+        ...changedArray[projectIndex],
+        responsibilities: [value],
+      };
+    } else {
+      changedArray[projectIndex] = {
+        ...changedArray[projectIndex],
+        responsibilities: [...changedArray[projectIndex].responsibilities, value],
+      };
+    }
+
     setMainInfo(changedArray);
     setResponsebilitiesInputValue('');
   };
@@ -68,7 +76,7 @@ export const ProjectsInformationForm: FC<ProjectsInformationFormType> = ({
   };
   return (
     <form>
-      {mainInfo.map((item, index) => (
+      {mainInfo && mainInfo.map((item, index) => (
         <div key={item.name} className='flex flex-col gap-3 border-2 mb-8 p-4 w-9/12'>
           <div>
             <div>Название проекта</div>
@@ -164,7 +172,7 @@ export const ProjectsInformationForm: FC<ProjectsInformationFormType> = ({
           <div>
             <div>Ответственности</div>
             <ul className='w-80 rounded flex flex-col'>
-              {item.responsibilities.map((response, ind) => (
+              {item.responsibilities && item.responsibilities.map((response, ind) => (
                 <li key={ind} className='m-2 p-2 border'>
                   <div className="flex flex-row w-full justify-between">
                     <span>{response}</span>
@@ -215,7 +223,38 @@ export const ProjectsInformationForm: FC<ProjectsInformationFormType> = ({
       </div>
         </div>
       ))}
-
+      <div className='gap-3 mb-3'>
+        <Button
+          text={'Добавить описание'}
+          className='border-0'
+          onClick={() => {
+            setMainInfo([
+              ...mainInfo,
+              {
+                name: '',
+                startDate: '',
+                endDate: '',
+                time: '',
+                position: '',
+                description: '',
+                responsibilities: [],
+                someInformation: '',
+                mainInformation: '',
+                skills: [],
+              },
+            ]);
+          }}
+        />
+        <Button
+         className='border-0'
+          text={'Удалить описание'}
+          onClick={() => {
+            setMainInfo(
+              mainInfo.filter((item, index) => index !== mainInfo.length - 1),
+            );
+          }}
+        />
+      </div>
       <Button
       text='Сохранить'
       onClick={() => handleFinish({ userId, project: mainInfo })}
