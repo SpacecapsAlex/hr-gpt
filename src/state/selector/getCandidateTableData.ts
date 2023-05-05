@@ -19,7 +19,7 @@ export const candidateTableDataQuery:RecoilValueReadOnly<CadidateTableType> = se
           citizenship: tableData.filterSettings?.citizenship,
           location: tableData.filterSettings?.location,
           professionalLevel: tableData.filterSettings?.professionalLevel,
-          skills: tableData.filterSettings?.surName,
+          skills: tableData.filterSettings?.skills,
           languages: tableData.filterSettings?.languges,
           age: tableData.filterSettings?.age,
           workExperience: tableData.filterSettings?.workExperience,
