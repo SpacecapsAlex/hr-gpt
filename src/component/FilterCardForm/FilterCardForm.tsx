@@ -103,11 +103,11 @@ export const FilterCardForm:FC<FilterCardFormType> = ({ handleFilter }) => {
       <div>
         <div>Скилы</div>
         <Tags
-          tagsValue={filter.skills}
+          tagsValue={filter.skills as string[]}
           isClosable={true}
           handleClose={(tag, e) => {
             e.preventDefault();
-            setfilter({ ...filter, skills: filter.skills.filter((item) => item !== tag) });
+            setfilter({ ...filter, skills: filter.skills?.filter((item) => item !== tag) ?? [] });
           }}
         />
         <div className="flex gap-3 mt-8">
@@ -119,7 +119,7 @@ export const FilterCardForm:FC<FilterCardFormType> = ({ handleFilter }) => {
           />
           <Button
             text="Добавить"
-            onClick={() => setfilter({ ...filter, skills: [...filter.skills, skillValue] })}
+            onClick={() => setfilter({ ...filter, skills: [...filter.skills as string[], skillValue] })}
           />
         </div>
       </div>

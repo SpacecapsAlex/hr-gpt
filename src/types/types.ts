@@ -216,7 +216,7 @@ export type FilterSettingsType = {
   location:string;
   professionalLevel: string;
   workExperience: number | null;
-  skills: string[];
+  skills: string[] | null;
   languges:string[];
 };
 
@@ -224,5 +224,5 @@ export type CandidatesTableType = {
   countItems: number;
   currentPage:number;
   searchString:string;
-  filterSettings:FilterSettingsType;
+  filterSettings:FilterSettingsType | null;
 };
