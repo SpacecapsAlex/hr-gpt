@@ -1,5 +1,5 @@
 import { Layout, Menu } from 'antd';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { Route, Routes } from 'react-router-dom';
 import { menuItemsStart } from './AppConstants';
@@ -11,6 +11,7 @@ import { Paths } from './constants/path';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import './App.css';
 import { CandidateTablePage } from './pages';
+import { UserUpdateForm } from './component/UserUpdateForm/UserUpdateForm';
 
 const { Header, Sider, Content } = Layout;
 
@@ -83,6 +84,7 @@ export const App = () => {
             />
             <Route path={Paths.login} element={<LoginPage />} />
             <Route path={Paths.login} element={<CandidateTablePage />} />
+            <Route path={Paths.updateUser} element={<Suspense><UserUpdateForm userId='B940833A-99A3-47DC-8516-DA3038BDABCA' /></Suspense>} />
           </Routes>
         </Content>
       </Layout>

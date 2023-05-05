@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { professionalLevelsQuery } from '../../state/selector/professionalLevels';
 import { FilterSettingsType, RadioOption } from '../../types/types';
@@ -16,11 +16,11 @@ export const FilterCardForm:FC<FilterCardFormType> = ({ handleFilter }) => {
   const [filter, setfilter] = useState<FilterSettingsType>({
     firstName: '',
     surName: '',
-    age: 0,
+    age: null,
     citizenship: '',
     location: '',
     professionalLevel: '',
-    workExperience: 0,
+    workExperience: null,
     skills: [],
     languges: [],
   });
@@ -54,7 +54,7 @@ export const FilterCardForm:FC<FilterCardFormType> = ({ handleFilter }) => {
       <div>
         <div>Возраст</div>
         <InputComponent
-          value={`${filter.age}`}
+          value={`${filter.age === null ? '' : filter.age}`}
           placeholder={`${filter.age}`}
           handleChange={(e) => {
             setfilter({ ...filter, age: +e });
@@ -93,7 +93,7 @@ export const FilterCardForm:FC<FilterCardFormType> = ({ handleFilter }) => {
       <div>
         <div>Опыт работы</div>
         <InputComponent
-          value={`${filter.workExperience}`}
+          value={ `${filter.workExperience}` }
           placeholder={`${filter.workExperience}`}
           handleChange={(e) => {
             setfilter({ ...filter, workExperience: +e });
