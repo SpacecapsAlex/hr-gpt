@@ -1,6 +1,5 @@
 /* eslint-disable max-lines */
 import { FC, useState } from 'react';
-import { InputComponent } from '../Input/Input';
 import { createNewUser } from '../../api/createUser';
 import { initialValues } from './UserMockData';
 import {
@@ -19,9 +18,12 @@ import { Button } from '../Button/Button';
 
 import styles from './styles.module.css';
 import { Label } from '../Label/Label';
+import { Skills } from './Skills/Skills';
 
 export const UserCreateForm: FC = () => {
   const [formValue, setFormValue] = useState<CreateUserType>(initialValues);
+  const [skillsLocal, setSkills] = useState<string[]>([]);
+  const [inputSkillValue, setInputSkillValue] = useState<string>('');
 
   const {
     firstName,
@@ -40,6 +42,13 @@ export const UserCreateForm: FC = () => {
     setFormValue({
       ...formValue,
       [name]: value,
+    });
+  };
+
+  const removeTag = (tag: string) => {
+    setFormValue({
+      ...formValue,
+      skills: formValue.skills.filter((skill) => skill.name !== tag),
     });
   };
 
@@ -73,6 +82,20 @@ export const UserCreateForm: FC = () => {
       ...prevState,
       [mainField]: selectedArray,
     }));
+  };
+
+  const addSkill = (
+    value: string,
+    mainField: CreateUserArrayTypeKeys,
+    initialValue: UserArrayTypes,
+  ) => {
+    setSkills([...skillsLocal, value]);
+    setInputSkillValue('');
+    if (!formValue.skills[0].name) {
+      updateArrayValues('name', value, mainField);
+    } else {
+      addField(mainField, initialValue);
+    }
   };
 
   return (
@@ -142,20 +165,20 @@ export const UserCreateForm: FC = () => {
         addField={addField}
         languages={formValue.languages}
       />
-      <li style={{ flexBasis: '100%' }}>
-        <InputComponent
-          placeholder="Навыки"
-          handleChange={(value) => {
-            updateArrayValues('name', value, 'skills');
-          }}
-          value={formValue.skills?.[0].name}
-        />
-      </li>
-      {/* <InputComponent //TODO specific structure. need to think
-        placeholder="Дополнительная информация"
-        handleChange={(value) => handleChange('additionalTitle', value)}
-        value={formValue.additionalTitle as string}
-      /> */}
+      <Label
+        text="Навыки:"
+        type="title"
+        titleLevel={5}
+        className={styles.base}
+      />
+      <Skills
+        inputSkillValue={inputSkillValue}
+        setInputSkillValue={setInputSkillValue}
+        skills={skillsLocal}
+        setSkills={setSkills}
+        addSkill={addSkill}
+        removeTag={removeTag}
+      />
       <div className={styles.base}>
         <Button
           onClick={() => createNewUser(formValue)}
