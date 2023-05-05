@@ -1,7 +1,9 @@
 import { Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { Button, FilterCardForm, Table } from '../../../component';
+import {
+  Button, FilterCardForm, Pagination, Table,
+} from '../../../component';
 import { Paths } from '../../../constants/path';
 import { modalState } from '../../../state/atom/modalState';
 import { tableOptionState } from '../../../state/atom/tableOption';
@@ -54,9 +56,17 @@ export const CandidateTable = () => {
       ),
     },
   ];
+  const handlePagination = (page: number, pageSize: number) => {
+    setFilterOptions({
+      ...filterOptions,
+      countItems: pageSize,
+      currentPage: page,
+    });
+  };
   return (
     <>
-      <Table columns={columns} rowsData={tableRowsData.users} />
+      <Table columns={columns} rowsData={tableRowsData.users} pagination={false}/>
+      <Pagination totalItems={tableRowsData.totalItems} handleChange={handlePagination} className='flex justify-end'/>
       <Button
         text="Найти Кандидата!"
         onClick={() => setModal({

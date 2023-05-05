@@ -13,3 +13,4 @@ export { Tags } from './Tags/Tags';
 export { FormComponent as Form } from './Form/FormComponent';
 export { UserCard } from './UserCard/UserCard';
 export { FilterCardForm } from './FilterCardForm/FilterCardForm';
+export { PaginationComponent as Pagination } from './Pagination/Pagination';
